@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/opcionMenuHola"
+        android:title="Hola" >
+        <menu
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
+            <item
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:title="TipoSaludoUno" />
+            <item
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:title="TipoSaludoDos" />
+        </menu>
+    </item>
+    <item
+        android:id="@+id/opcionMenuAdios"
+        android:title="Adios" />
+    <group
+        android:id="@+id/grupoColores"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:checkableBehavior="single">
+        <item
+            android:id="@+id/opcionColorAzul"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:title="Item" />
+        <item
+            android:id="@+id/opcionColorRojo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:title="Item" />
+    </group>
+</menu>

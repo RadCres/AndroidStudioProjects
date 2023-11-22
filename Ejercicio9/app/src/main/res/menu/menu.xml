@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/menuColores"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:title="Colores">
+        <menu
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <item
+                android:id="@+id/colorRojo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:title="Rojo" />
+            <item
+                android:id="@+id/colorVerde"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:title="Verde" />
+            <item
+                android:id="@+id/colorAzul"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:title="Azul" />
+            <item
+                android:id="@+id/colorMorado"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:title="Morado" />
+            <item
+                android:id="@+id/colorBlanco"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:title="Blanco" />
+            <item
+                android:id="@+id/colorNegro"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:title="Negro" />
+        </menu>
+    </item>
+    <item
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:title="Otras" />
+</menu>

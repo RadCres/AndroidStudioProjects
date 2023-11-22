@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">ProyectoAvengers</string>
+    <string name="text_subrayado"><u>Seleccione el tamaño</u></string>
+    <string name="text_subrayadoTipo"><u>Tipo de Funko</u></string>
+</resources>

@@ -1,23 +1,20 @@
 package com.example.proyectotema3;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.ActivityNotFoundException;
-import android.content.ClipData;
 import android.content.Intent;
-import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
-import android.view.ContextMenu;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
-public class MainActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
+public class MainActivity extends AppCompatActivity {
     private ImageButton iconoTelefono;
     private ImageButton iconoEmail;
     private ImageButton iconoMaps;
@@ -25,6 +22,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     private ImageButton iconoClassroom;
     private ImageButton iconoWeb;
     private ImageButton icoMoodle;
+    private ImageButton icoCulturas;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,7 +36,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         iconoClassroom = findViewById(R.id.imageButtonClassroom);
         iconoWeb = findViewById(R.id.imageButtonWeb);
         icoMoodle = findViewById(R.id.imageButtonMoodle);
-
+        icoCulturas = findViewById(R.id.imageButtonCulturas);
 
         iconoTelefono.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -147,59 +145,71 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
             }
         });
 
+        icoCulturas.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(v.getContext(), MainActivity2.class);
+                startActivity(intent);
+                finishActivity(R.layout.activity_main);
+            }
+        });
+
+
+
     }
+
+
 
     private void pulsarOpcionDelMenu(String opcion) {
         if (opcion.equalsIgnoreCase("EscolarizacionSecundaria")) {
-            iconoWeb.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    String url = "https://iesarroyoharnina.educarex.es/index.php?option=com_content&view=article&id=810&Itemid=213497";
-                    try {
-                        // Utiliza ACTION_VIEW en lugar de ACTION_WEB_SEARCH
-                        Intent intentoUrl = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
-                        startActivity(intentoUrl); // Asegúrate de iniciar la actividad
-                    } catch (ActivityNotFoundException e) {
-                        Toast.makeText(getApplicationContext(), "No se pudo abrir la página web", Toast.LENGTH_SHORT).show();
-                    }
-                }
-            });
+            String url = "https://iesarroyoharnina.educarex.es/index.php?option=com_content&view=article&id=810&Itemid=213497";
+            try {
+                // Utiliza ACTION_VIEW en lugar de ACTION_WEB_SEARCH
+                Intent intentoUrl = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+                startActivity(intentoUrl); // Asegúrate de iniciar la actividad
+            } catch (ActivityNotFoundException e) {
+                Toast.makeText(getApplicationContext(), "No se pudo abrir la página web", Toast.LENGTH_SHORT).show();
+            }
         } else {
-            opcion.equalsIgnoreCase("EscolarizacionFP");
-            iconoWeb.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    String url = "https://iesarroyoharnina.educarex.es/index.php?option=com_content&view=article&id=940&Itemid=213573";
-                    try {
-                        // Utiliza ACTION_VIEW en lugar de ACTION_WEB_SEARCH
-                        Intent intentoUrl = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
-                        startActivity(intentoUrl); // Asegúrate de iniciar la actividad
-                    } catch (ActivityNotFoundException e) {
-                        Toast.makeText(getApplicationContext(), "No se pudo abrir la página web", Toast.LENGTH_SHORT).show();
-                    }
-                }
-            });
+            String url = "https://iesarroyoharnina.educarex.es/index.php?option=com_content&view=article&id=940&Itemid=213573";
+            try {
+                // Utiliza ACTION_VIEW en lugar de ACTION_WEB_SEARCH
+                Intent intentoUrl = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+                startActivity(intentoUrl); // Asegúrate de iniciar la actividad
+            } catch (ActivityNotFoundException e) {
+                Toast.makeText(getApplicationContext(), "No se pudo abrir la página web", Toast.LENGTH_SHORT).show();
+            }
         }
     }
 
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu_main, menu);
+        return true;
+    }
 
     @Override
-    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-        String opcion = null;
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        String opcion = "";
         switch (item.getItemId()) {
-            case R.id.opcionAsignaturas:
+            case R.id.EscolarizacionSecundaria:
+                opcion = "EscolarizacionSecundaria";
+                pulsarOpcionDelMenu(opcion);
 
                 return true;
             case R.id.EscolarizacionFP:
+                opcion = "EscolarizacionFP";
 
                 return true;
+            case R.id.opcionAsignaturas:
+                Intent intent = new Intent(this, MainActivity2.class);
+                startActivity(intent);
+                finishActivity(R.layout.activity_main);
+
+                return true;
+
             default:
-                return super.onContextItemSelected(item);
+                return super.onOptionsItemSelected(item);
         }
-    }
-
-    @Override
-    public void onNothingSelected(AdapterView<?> parent) {
-
     }
 }

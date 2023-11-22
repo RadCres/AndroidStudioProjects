@@ -2,6 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activityMain"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/sin_t_tulo"
@@ -11,8 +12,8 @@
 
     <ImageView
         android:id="@+id/imageView3"
-        android:layout_width="92dp"
-        android:layout_height="66dp"
+        android:layout_width="77dp"
+        android:layout_height="56dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -138,10 +139,9 @@
                 android:scaleY="2.6"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.134"
+                app:layout_constraintHorizontal_bias="0.069"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.27"
                 app:srcCompat="@mipmap/icorayuela_foreground"
                 tools:ignore="SpeakableTextPresentCheck" />
 
@@ -152,10 +152,10 @@
                 android:background="@drawable/logo_square_rounded_removebg_preview"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.87"
+                app:layout_constraintHorizontal_bias="0.695"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.444"
+                app:layout_constraintVertical_bias="1.0"
                 tools:ignore="SpeakableTextPresentCheck" />
 
             <ImageButton
@@ -168,10 +168,27 @@
                 android:scaleY="1.05"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.359"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.384"
                 app:srcCompat="@drawable/moodle_logo_tm_removebg_preview" />
+
+            <ImageButton
+                android:id="@+id/imageButtonCulturas"
+                android:layout_width="56dp"
+                android:layout_height="47dp"
+                android:backgroundTint="#00FFFFFF"
+                android:scaleType="fitCenter"
+                android:scaleX="3"
+                android:scaleY="3"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.955"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.833"
+                app:srcCompat="@drawable/multiculturas" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </com.google.android.material.bottomnavigation.BottomNavigationView>

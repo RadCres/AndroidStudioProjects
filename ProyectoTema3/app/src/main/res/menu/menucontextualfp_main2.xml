@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/FPopcion1SA"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:title="1º Servicios Administrativos" />
+    <item
+        android:id="@+id/FPopcion2SA"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:title="2º Servicios Administrativos" />
+    <item
+        android:id="@+id/FPopcion1GA"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:title="1º Gestión Administrativa" />
+    <item
+        android:id="@+id/FPopcion2GA"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:title="2º Gestión Administrativa" />
+    <item
+        android:id="@+id/FPopcion1AF"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:title="1º Administración y Finanzas" />
+    <item
+        android:id="@+id/FPopcion2AF"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:title="2º Administración y Finanzas" />
+    <item
+        android:id="@+id/FPopcion1DAM"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:title="1º Desarrollo de Aplicaciones Multiplataforma" />
+    <item
+        android:id="@+id/FPopcion2DAM"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:title="2º Desarrollo de Aplicaciones Multiplataforma" />
+</menu>

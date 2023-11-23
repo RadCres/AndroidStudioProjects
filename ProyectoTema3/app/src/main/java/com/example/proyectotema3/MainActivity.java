@@ -148,7 +148,7 @@ public class MainActivity extends AppCompatActivity {
         icoCulturas.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(v.getContext(), MainActivity2.class);
+                Intent intent = new Intent(v.getContext(), MainActivity3.class);
                 startActivity(intent);
                 finishActivity(R.layout.activity_main);
             }
@@ -201,7 +201,7 @@ public class MainActivity extends AppCompatActivity {
                 opcion = "EscolarizacionFP";
 
                 return true;
-            case R.id.opcionAsignaturas:
+            case R.id.opcionEso:
                 Intent intent = new Intent(this, MainActivity2.class);
                 startActivity(intent);
                 finishActivity(R.layout.activity_main);

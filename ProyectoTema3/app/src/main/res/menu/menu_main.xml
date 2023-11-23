@@ -21,6 +21,6 @@
         </menu>
     </item>
     <item
-        android:id="@+id/opcionAsignaturas"
+        android:id="@+id/opcionEso"
         android:title="Asignaturas" />
 </menu>

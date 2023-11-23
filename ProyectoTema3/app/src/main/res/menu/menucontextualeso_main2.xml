@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/itemPrimero"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:title="1º ESO" />
+    <item
+        android:id="@+id/itemSegundo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:title="2º ESO" />
+    <item
+        android:id="@+id/itemTercero"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:title="3º ESO" />
+    <item
+        android:id="@+id/itemCuarto"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:title="4º ESO" />
+</menu>

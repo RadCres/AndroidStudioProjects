@@ -23,7 +23,7 @@
         app:srcCompat="@drawable/asignaturas__1__photoroom_png_photoroom" />
 
     <ImageButton
-        android:id="@+id/imageButton2"
+        android:id="@+id/imageButtonEso"
         android:layout_width="145dp"
         android:layout_height="83dp"
         android:backgroundTint="#00FFFFFF"
@@ -34,11 +34,11 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.188"
+        app:layout_constraintVertical_bias="0.185"
         app:srcCompat="@drawable/eso" />
 
     <ImageButton
-        android:id="@+id/imageButton3"
+        android:id="@+id/imageButtonBachillerato"
         android:layout_width="323dp"
         android:layout_height="79dp"
         android:backgroundTint="#00FFFFFF"
@@ -53,7 +53,7 @@
         app:srcCompat="@drawable/bachiller" />
 
     <ImageButton
-        android:id="@+id/imageButton4"
+        android:id="@+id/imageButtonFP"
         android:layout_width="340dp"
         android:layout_height="82dp"
         android:backgroundTint="#00FFFFFF"

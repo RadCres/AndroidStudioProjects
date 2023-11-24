@@ -11,15 +11,15 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
-public class MiAdaptador extends RecyclerView.Adapter<MiAdaptador.ViewHolder> {
+public class MiAdaptador extends RecyclerView.Adapter<MiAdaptador.V> {
 
     private List<String> mData;
     private LayoutInflater mInflater;
     private AdapterView.OnItemClickListener itemClickListener;
 
-    MiAdaptador(Context Contexto, List<String> data) {
-        this.mData = LayoutInflater.from(contexto);
-        this.mInflater = data;
+    MiAdaptador(Context contexto, List<String> data) {
+        this.mInflater = LayoutInflater.from(contexto);
+        this.mData = data;
     }
 
 
@@ -37,6 +37,10 @@ public class MiAdaptador extends RecyclerView.Adapter<MiAdaptador.ViewHolder> {
     @Override
     public int getItemCount() {
         return mData.size();
+    }
+
+    public class Holder extends ViewHolder{
+
     }
 }
 

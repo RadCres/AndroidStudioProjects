@@ -3,15 +3,17 @@ package com.example.proyectotema3;
 
 import android.content.Context;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
-public class MiAdaptador extends RecyclerView.Adapter<MiAdaptador.V> {
+public class MiAdaptador extends RecyclerView.Adapter<MiAdaptador.Holder> {
 
     private List<String> mData;
     private LayoutInflater mInflater;
@@ -25,12 +27,12 @@ public class MiAdaptador extends RecyclerView.Adapter<MiAdaptador.V> {
 
     @NonNull
     @Override
-    public MiAdaptador.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public MiAdaptador.Holder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         return null;
     }
 
     @Override
-    public void onBindViewHolder(@NonNull MiAdaptador.ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull MiAdaptador.Holder holder, int position) {
 
     }
 
@@ -39,8 +41,15 @@ public class MiAdaptador extends RecyclerView.Adapter<MiAdaptador.V> {
         return mData.size();
     }
 
-    public class Holder extends ViewHolder{
+    public class Holder extends RecyclerView.ViewHolder{
+        private TextView nombre;
+        private TextView nombre2;
 
+        public Holder(@NonNull View itemView) {
+            super(itemView);
+            nombre = itemView.findViewById(R.id.textViewNombre);
+            nombre2 = itemView.findViewById(R.id.textViewNombre2);
+        }
     }
 }
 

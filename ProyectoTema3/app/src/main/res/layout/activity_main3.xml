@@ -9,6 +9,7 @@
     tools:context=".MainActivity3">
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recicler"
         android:layout_width="270dp"
         android:layout_height="459dp"
         tools:itemCount="1"

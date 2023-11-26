@@ -60,7 +60,7 @@ public class MiAdaptador extends RecyclerView.Adapter<MiAdaptador.Holder> {
 
         public void fillContent(Nacionalidad nacionalidad) {
             this.nombre.setText(nacionalidad.getPais());
-            this.nombre.setText(nacionalidad.getIdiomaOficial());
+            this.nombre2.setText(nacionalidad.getIdiomaOficial());
         }
 
         @Override
@@ -73,7 +73,6 @@ public class MiAdaptador extends RecyclerView.Adapter<MiAdaptador.Holder> {
 
     public interface IntemClickListener{
         void onClickSelected(View vista, int position);
-
 
     }
 

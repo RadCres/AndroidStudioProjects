@@ -17,7 +17,7 @@ public class NacionalidadOM {
                 , "Español","Ucraniano","Español","Español", "Italiano", "Chino", "Español"
                 , "Portugues"};
 
-        int[] banderas={1,1,1,1,1,1,1,1,1,1,1,1};
+        int[] banderas={1,1,1,1,1,1,1,1,1,1,1,1,1,1,1};
 
         for (int i = 0; i < paises.length; i++) {
             Nacionalidad nacionalidad = new Nacionalidad.Builder(banderas[i], paises[i])

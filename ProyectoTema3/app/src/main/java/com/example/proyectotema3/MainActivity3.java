@@ -5,6 +5,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
@@ -37,5 +38,6 @@ public class MainActivity3 extends AppCompatActivity implements MiAdaptador.Inte
     @Override
     public void onClickSelected(View vista, int position) {
         Toast.makeText(this, "HOLA", Toast.LENGTH_SHORT).show();
+        Log.d("Adaptador", "onClickSelected: Escucho");
     }
 }

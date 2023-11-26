@@ -30,8 +30,8 @@ public class MainActivity2 extends AppCompatActivity {
 
         String nombre = getIntent().getStringExtra("Nombre");
         String pais = getIntent().getStringExtra("Pais");
-        txt1.setText(nombre);
-        txt2.setText(pais);
+        txt1.setText("Bienvenido "+nombre);
+        txt2.setText("Eres de "+pais);
 
         toolbar = findViewById(R.id.toolbar);
 

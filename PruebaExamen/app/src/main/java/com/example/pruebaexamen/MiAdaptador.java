@@ -22,7 +22,6 @@ public class MiAdaptador extends RecyclerView.Adapter<MiAdaptador.Holder> {
         this.listaLibros = listaLibros;
     }
 
-
     @NonNull
     @Override
     public MiAdaptador.Holder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -31,7 +30,6 @@ public class MiAdaptador extends RecyclerView.Adapter<MiAdaptador.Holder> {
 
     @Override
     public void onBindViewHolder(@NonNull MiAdaptador.Holder holder, int position) {
-//        holder.fillContent(listaLibros.get(position));
         String libro = listaLibros.get(position);
         holder.nombre.setText(libro);
     }
@@ -45,17 +43,6 @@ public class MiAdaptador extends RecyclerView.Adapter<MiAdaptador.Holder> {
         this.intemClickListener = mainActivity3;
     }
 
-    public void removeItem(int position) {
-        listaLibros.remove(position);
-    }
-
-//    public void addLibro(String nuevoLibro) {
-//        if (!nuevoLibro.isEmpty()) {
-//            listaLibros.add(nuevoLibro);
-//        }
-//
-//    }
-
     public class Holder extends RecyclerView.ViewHolder implements View.OnClickListener {
         private TextView nombre;
 
@@ -65,13 +52,7 @@ public class MiAdaptador extends RecyclerView.Adapter<MiAdaptador.Holder> {
             nombre = itemView.findViewById(R.id.textViewNombre);
 
             itemView.setOnClickListener(this);
-
         }
-
-//        public void fillContent(String libro) {
-//            this.nombre.setText(libro);
-//
-//        }
 
         @Override
         public void onClick(View v) {

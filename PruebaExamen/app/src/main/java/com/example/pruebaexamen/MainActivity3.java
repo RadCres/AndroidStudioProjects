@@ -49,7 +49,7 @@ public class MainActivity3 extends AppCompatActivity implements MiAdaptador.Inte
         builder.setTitle("Alerta");
         builder.setMessage("¿Seguro que deseas borrar?");
         builder.setPositiveButton("Aceptar", (dialog, which) -> {
-                    miAdapterRecicler.removeItem(position);
+                    removeItem(position);
                     miAdapterRecicler.notifyDataSetChanged();
                     dialog.dismiss();
                 }
@@ -60,7 +60,8 @@ public class MainActivity3 extends AppCompatActivity implements MiAdaptador.Inte
         );
         builder.create().show();
     }
-//    public void anadirLibroALista() {
+
+    //    public void anadirLibroALista() {
 //        agregarLibro.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View v) {
@@ -81,5 +82,9 @@ public class MainActivity3 extends AppCompatActivity implements MiAdaptador.Inte
                 }
             }
         });
+    }
+
+    public void removeItem(int position) {
+        listaLibros.remove(position);
     }
 }

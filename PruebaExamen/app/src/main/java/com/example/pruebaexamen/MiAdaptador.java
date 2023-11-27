@@ -15,7 +15,7 @@ import java.util.List;
 public class MiAdaptador extends RecyclerView.Adapter<MiAdaptador.Holder> {
     private List<String> listaLibros;
     private LayoutInflater mInflater;
-   private IntemClickListener intemClickListener;
+    private IntemClickListener intemClickListener;
 
     MiAdaptador(Context contexto, List<String> listaLibros) {
         this.mInflater = LayoutInflater.from(contexto);
@@ -31,7 +31,9 @@ public class MiAdaptador extends RecyclerView.Adapter<MiAdaptador.Holder> {
 
     @Override
     public void onBindViewHolder(@NonNull MiAdaptador.Holder holder, int position) {
-        holder.fillContent(listaLibros.get(position));
+//        holder.fillContent(listaLibros.get(position));
+        String libro = listaLibros.get(position);
+        holder.nombre.setText(libro);
     }
 
     @Override
@@ -48,13 +50,13 @@ public class MiAdaptador extends RecyclerView.Adapter<MiAdaptador.Holder> {
     }
 
     public void addLibro(String nuevoLibro) {
-        if (!nuevoLibro.isEmpty()){
-        listaLibros.add(nuevoLibro);
+        if (!nuevoLibro.isEmpty()) {
+            listaLibros.add(nuevoLibro);
         }
-        
+
     }
 
-    public class Holder extends RecyclerView.ViewHolder implements View.OnClickListener{
+    public class Holder extends RecyclerView.ViewHolder implements View.OnClickListener {
         private TextView nombre;
 
 
@@ -66,20 +68,20 @@ public class MiAdaptador extends RecyclerView.Adapter<MiAdaptador.Holder> {
 
         }
 
-        public void fillContent(String libro) {
-            this.nombre.setText(libro);
-
-        }
+//        public void fillContent(String libro) {
+//            this.nombre.setText(libro);
+//
+//        }
 
         @Override
         public void onClick(View v) {
-            if (intemClickListener != null){
+            if (intemClickListener != null) {
                 intemClickListener.onClickSelected(v, getAdapterPosition());
             }
         }
     }
 
-    public interface IntemClickListener{
+    public interface IntemClickListener {
         void onClickSelected(View vista, int position);
 
     }

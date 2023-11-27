@@ -29,8 +29,6 @@ public class MainActivity3 extends AppCompatActivity implements MiAdaptador.Inte
         setContentView(R.layout.activity_main3);
         listaLibros = new ArrayList<>();
         listaLibros = IntStream.rangeClosed(1, 6).boxed().map(String::valueOf).collect(Collectors.toList());
-//        IntStream.rangeClosed(1, 6).boxed().map(String::valueOf).collect(Collectors.toList());
-
 
         miAdapterRecicler = new MiAdaptador(this, listaLibros);
         recicler = findViewById(R.id.recicler);
@@ -61,16 +59,7 @@ public class MainActivity3 extends AppCompatActivity implements MiAdaptador.Inte
         builder.create().show();
     }
 
-    //    public void anadirLibroALista() {
-//        agregarLibro.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                String nuevoLibro = libroNuevo.getText().toString();
-//                miAdapterRecicler.addLibro(nuevoLibro);
-//                miAdapterRecicler.notifyDataSetChanged();
-////            }
-//        });
-//    }
+
     public void anadirLibroALista() {
         agregarLibro.setOnClickListener(new View.OnClickListener() {
             @Override

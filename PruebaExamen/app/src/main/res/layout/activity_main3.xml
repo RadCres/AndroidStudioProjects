@@ -8,14 +8,15 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recicler"
-        android:layout_width="211dp"
-        android:layout_height="481dp"
+        android:layout_width="208dp"
+        android:layout_height="363dp"
         android:layout_marginBottom="28dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.986" />
+        app:layout_constraintVertical_bias="0.776" />
 
     <Button
         android:id="@+id/buttonanadir"

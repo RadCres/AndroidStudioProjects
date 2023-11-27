@@ -19,14 +19,17 @@ import java.util.stream.IntStream;
 public class MainActivity3 extends AppCompatActivity implements MiAdaptador.IntemClickListener {
     private RecyclerView recicler;
     private MiAdaptador miAdapterRecicler;
-
+    private List<String> listaLibros;
     private EditText libroNuevo;
     private Button agregarLibro;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main3);
-        List<String> listaLibros = IntStream.rangeClosed(1,6).boxed().map(String::valueOf).collect(Collectors.toList());
+        listaLibros = new ArrayList<>();
+        listaLibros = IntStream.rangeClosed(1, 6).boxed().map(String::valueOf).collect(Collectors.toList());
+//        IntStream.rangeClosed(1, 6).boxed().map(String::valueOf).collect(Collectors.toList());
 
 
         miAdapterRecicler = new MiAdaptador(this, listaLibros);
@@ -56,16 +59,26 @@ public class MainActivity3 extends AppCompatActivity implements MiAdaptador.Inte
                 }
         );
         builder.create().show();
-
     }
-
-    public void anadirLibroALista(){
+//    public void anadirLibroALista() {
+//        agregarLibro.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                String nuevoLibro = libroNuevo.getText().toString();
+//                miAdapterRecicler.addLibro(nuevoLibro);
+//                miAdapterRecicler.notifyDataSetChanged();
+////            }
+//        });
+//    }
+    public void anadirLibroALista() {
         agregarLibro.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               String nuevoLibro= libroNuevo.getText().toString();
-                miAdapterRecicler.addLibro(nuevoLibro);
-                miAdapterRecicler.notifyDataSetChanged();
+                String nuevoLibro = libroNuevo.getText().toString();
+                if (!nuevoLibro.isEmpty()) {
+                    listaLibros.add(nuevoLibro);
+                    miAdapterRecicler.notifyDataSetChanged();
+                }
             }
         });
     }

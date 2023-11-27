@@ -49,12 +49,12 @@ public class MiAdaptador extends RecyclerView.Adapter<MiAdaptador.Holder> {
         listaLibros.remove(position);
     }
 
-    public void addLibro(String nuevoLibro) {
-        if (!nuevoLibro.isEmpty()) {
-            listaLibros.add(nuevoLibro);
-        }
-
-    }
+//    public void addLibro(String nuevoLibro) {
+//        if (!nuevoLibro.isEmpty()) {
+//            listaLibros.add(nuevoLibro);
+//        }
+//
+//    }
 
     public class Holder extends RecyclerView.ViewHolder implements View.OnClickListener {
         private TextView nombre;

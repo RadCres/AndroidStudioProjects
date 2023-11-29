@@ -1,0 +1,9 @@
+<resources>
+xmlns:android="http://schemas.android.com/apk/res/android">
+<!-- Tema de la aplicación -->
+<style name="estiloRaul" parent="android:Theme.Holo.Light">
+    <!-- Configuración global del tema, no imprescindible -->
+    <item name="android:textColor">@android:color/holo_green_dark</item>
+    <item name="android:background">@android:color/holo_orange_dark</item>
+</style>
+</resources>

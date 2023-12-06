@@ -1,12 +1,14 @@
 package com.example.proyectotema3.model;
 
+import android.media.Image;
+
 public class Nacionalidad {
-    private int bandera;
+    private Image bandera;
     private String pais;
     private String numeroAlumnos;
     private String idiomaOficial;
 
-    private Nacionalidad(int bandera, String pais) {
+    private Nacionalidad(Image bandera, String pais) {
         this.bandera = bandera;
         this.pais = pais;
     }
@@ -19,17 +21,21 @@ public class Nacionalidad {
         this.idiomaOficial = idiomaOficial;
     }
 
-    public static class Builder{
-        private int bandera;
+    private void setBandera(Image bandera) {
+        this.bandera = bandera;
+    }
+
+    public static class Builder {
+        private Image bandera;
         private String pais;
         private String numeroAlumnos;
         private String idiomaOficial;
 
-        public Builder(int bandera, String pais) {
+        public Builder(Image bandera, String pais) {
             this.bandera = bandera;
             this.pais = pais;
-            this.numeroAlumnos="0";
-            this.idiomaOficial="NS";
+            this.numeroAlumnos = "0";
+            this.idiomaOficial = "NS";
         }
 
         public Builder setNumeroAlumnos(String numeroAlumnos) {
@@ -42,16 +48,22 @@ public class Nacionalidad {
             return this;
         }
 
-        public Nacionalidad build(){
-            Nacionalidad nacionalidad = new Nacionalidad(this.bandera,this.pais);
+        public Builder setBandera(Image bandera) {
+            this.bandera = bandera;
+            return this;
+        }
+
+        public Nacionalidad build() {
+            Nacionalidad nacionalidad = new Nacionalidad(this.bandera, this.pais);
             nacionalidad.setIdiomaOficial(this.idiomaOficial);
             nacionalidad.setNumeroAlumnos(this.numeroAlumnos);
+            nacionalidad.setBandera(this.bandera);
             return nacionalidad;
         }
 
     }
 
-    public int getBandera() {
+    public Image getBandera() {
         return bandera;
     }
 

@@ -1,14 +1,12 @@
 package com.example.proyectotema3.model;
 
-import android.media.Image;
-
 public class Nacionalidad {
-    private Image bandera;
+    private int bandera;
     private String pais;
     private String numeroAlumnos;
     private String idiomaOficial;
 
-    private Nacionalidad(Image bandera, String pais) {
+    private Nacionalidad(int bandera, String pais) {
         this.bandera = bandera;
         this.pais = pais;
     }
@@ -21,17 +19,17 @@ public class Nacionalidad {
         this.idiomaOficial = idiomaOficial;
     }
 
-    private void setBandera(Image bandera) {
+    private void setBandera(int bandera) {
         this.bandera = bandera;
     }
 
     public static class Builder {
-        private Image bandera;
+        private int bandera;
         private String pais;
         private String numeroAlumnos;
         private String idiomaOficial;
 
-        public Builder(Image bandera, String pais) {
+        public Builder(int bandera, String pais) {
             this.bandera = bandera;
             this.pais = pais;
             this.numeroAlumnos = "0";
@@ -48,7 +46,7 @@ public class Nacionalidad {
             return this;
         }
 
-        public Builder setBandera(Image bandera) {
+        public Builder setBandera(int bandera) {
             this.bandera = bandera;
             return this;
         }
@@ -63,7 +61,7 @@ public class Nacionalidad {
 
     }
 
-    public Image getBandera() {
+    public int getBandera() {
         return bandera;
     }
 

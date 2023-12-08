@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -49,11 +50,13 @@ public class MiAdaptador extends RecyclerView.Adapter<MiAdaptador.Holder> {
     public class Holder extends RecyclerView.ViewHolder implements View.OnClickListener{
         private TextView nombre;
         private TextView nombre2;
+        private ImageView imageViewBandera;
 
         public Holder(@NonNull View itemView) {
             super(itemView);
             nombre = itemView.findViewById(R.id.textViewNombre);
             nombre2 = itemView.findViewById(R.id.textViewNombre2);
+            imageViewBandera = itemView.findViewById(R.id.imageViewBandera);
             itemView.setOnClickListener(this);
 
         }
@@ -61,6 +64,7 @@ public class MiAdaptador extends RecyclerView.Adapter<MiAdaptador.Holder> {
         public void fillContent(Nacionalidad nacionalidad) {
             this.nombre.setText(nacionalidad.getPais());
             this.nombre2.setText(nacionalidad.getIdiomaOficial());
+            this.imageViewBandera.setImageResource(nacionalidad.getBandera());
         }
 
         @Override

@@ -45,7 +45,7 @@
         tools:text="@tools:sample/lorem" />
 
     <ImageView
-        android:id="@+id/imageView2"
+        android:id="@+id/imageViewBandera"
         android:layout_width="95dp"
         android:layout_height="70dp"
         app:layout_constraintBottom_toBottomOf="parent"

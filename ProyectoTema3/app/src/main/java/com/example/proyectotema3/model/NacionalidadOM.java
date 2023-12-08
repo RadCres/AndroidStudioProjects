@@ -24,9 +24,9 @@ public class NacionalidadOM {
 
         for (int i = 0; i < paises.length; i++) {
             Nacionalidad nacionalidad = new Nacionalidad.Builder(banderas[i], paises[i])
-                    .setNumeroAlumnos(numeroAlumno[i])
-                    .setIdiomaOficial(idioma[i]).build();
-                    nacionalidades.add(nacionalidad);
+                    .setNumeroAlumnos(numeroAlumno[i]+ " alumno/s")
+                    .setIdiomaOficial("Idioma: " + idioma[i]).build();
+            nacionalidades.add(nacionalidad);
         }
 
 

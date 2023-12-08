@@ -83,18 +83,18 @@
 
     <ImageButton
         android:id="@+id/imageButtonMaps"
-        android:layout_width="89dp"
-        android:layout_height="78dp"
+        android:layout_width="70dp"
+        android:layout_height="75dp"
         android:background="@mipmap/icomaps_foreground"
         android:scaleType="fitCenter"
         android:scaleX="1.2"
         android:scaleY="1.1"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.705"
+        app:layout_constraintHorizontal_bias="0.692"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.56"
+        app:layout_constraintVertical_bias="0.562"
         tools:ignore="SpeakableTextPresentCheck" />
 
     <ImageButton

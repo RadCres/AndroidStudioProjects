@@ -46,10 +46,10 @@ public class Nacionalidad {
             return this;
         }
 
-        public Builder setBandera(int bandera) {
-            this.bandera = bandera;
-            return this;
-        }
+//        public Builder setBandera(int bandera) {
+//            this.bandera = bandera;
+//            return this;
+//        }
 
         public Nacionalidad build() {
             Nacionalidad nacionalidad = new Nacionalidad(this.bandera, this.pais);

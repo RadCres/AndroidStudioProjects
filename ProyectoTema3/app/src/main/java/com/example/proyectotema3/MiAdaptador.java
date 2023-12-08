@@ -4,7 +4,6 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -13,7 +12,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.proyectotema3.model.Nacionalidad;
 
-import java.net.InterfaceAddress;
 import java.util.List;
 
 public class MiAdaptador extends RecyclerView.Adapter<MiAdaptador.Holder> {
@@ -48,22 +46,25 @@ public class MiAdaptador extends RecyclerView.Adapter<MiAdaptador.Holder> {
     }
 
     public class Holder extends RecyclerView.ViewHolder implements View.OnClickListener{
-        private TextView nombre;
-        private TextView nombre2;
+        private TextView nombrePais;
+        private TextView nombreIdioma;
+        private TextView cantidadAlumnos;
         private ImageView imageViewBandera;
 
         public Holder(@NonNull View itemView) {
             super(itemView);
-            nombre = itemView.findViewById(R.id.textViewNombre);
-            nombre2 = itemView.findViewById(R.id.textViewNombre2);
+            nombrePais = itemView.findViewById(R.id.textViewNombrePais);
+            nombreIdioma = itemView.findViewById(R.id.textViewIdioma);
+            cantidadAlumnos = itemView.findViewById(R.id.textViewNumeroAlumnos);
             imageViewBandera = itemView.findViewById(R.id.imageViewBandera);
             itemView.setOnClickListener(this);
 
         }
 
         public void fillContent(Nacionalidad nacionalidad) {
-            this.nombre.setText(nacionalidad.getPais());
-            this.nombre2.setText(nacionalidad.getIdiomaOficial());
+            this.nombrePais.setText(nacionalidad.getPais());
+            this.nombreIdioma.setText(nacionalidad.getIdiomaOficial());
+            this.cantidadAlumnos.setText(nacionalidad.getNumeroAlumnos());
             this.imageViewBandera.setImageResource(nacionalidad.getBandera());
         }
 

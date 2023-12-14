@@ -10,9 +10,9 @@
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
-        android:icon="@drawable/iesvector"
+        android:icon="@mipmap/har_round"
+        android:roundIcon="@mipmap/har_round"
         android:label="IES Arroyo Harnina"
-        android:roundIcon="@drawable/iesvector"
         android:supportsRtl="true"
         android:theme="@style/Theme.ProyectoTema3"
         tools:targetApi="31">

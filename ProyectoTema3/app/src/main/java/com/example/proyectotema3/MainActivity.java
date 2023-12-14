@@ -157,7 +157,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-
     private void pulsarOpcionDelMenu(String opcion) {
         if (opcion.equalsIgnoreCase("EscolarizacionSecundaria")) {
             String url = "https://iesarroyoharnina.educarex.es/index.php?option=com_content&view=article&id=810&Itemid=213497";
@@ -205,6 +204,10 @@ public class MainActivity extends AppCompatActivity {
                 finishActivity(R.layout.activity_main);
 
                 return true;
+            case R.id.opcionCalendario:
+                Intent intentDos = new Intent(this, MainActivity4.class);
+                startActivity(intentDos);
+                finishActivity(R.layout.activity_main);
 
             default:
                 return super.onOptionsItemSelected(item);

@@ -30,10 +30,10 @@
         android:layout_height="426dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.627"
+        app:layout_constraintHorizontal_bias="0.542"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.358"
+        app:layout_constraintVertical_bias="0.403"
         tools:itemCount="1"
         tools:listitem="@layout/recycler_view_item" />
 
@@ -45,7 +45,7 @@
         android:fontFamily="@font/jockey_one"
         android:text="Culturas del centro"
         android:textAlignment="center"
-        android:textColor="#143875"
+        android:textColor="#E5E8EC"
         android:textSize="34sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"

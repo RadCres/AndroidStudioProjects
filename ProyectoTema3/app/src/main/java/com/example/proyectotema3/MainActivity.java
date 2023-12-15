@@ -167,12 +167,12 @@ public class MainActivity extends AppCompatActivity {
             } catch (ActivityNotFoundException e) {
                 Toast.makeText(getApplicationContext(), "No se pudo abrir la página web", Toast.LENGTH_SHORT).show();
             }
-        } else {
+        } if (opcion.equalsIgnoreCase("EscolarizacionFP")) {
             String url = "https://iesarroyoharnina.educarex.es/index.php?option=com_content&view=article&id=940&Itemid=213573";
             try {
                 // Utiliza ACTION_VIEW en lugar de ACTION_WEB_SEARCH
-                Intent intentoUrl = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
-                startActivity(intentoUrl); // Asegúrate de iniciar la actividad
+                Intent intentoUrl2 = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+                startActivity(intentoUrl2);
             } catch (ActivityNotFoundException e) {
                 Toast.makeText(getApplicationContext(), "No se pudo abrir la página web", Toast.LENGTH_SHORT).show();
             }
@@ -196,7 +196,7 @@ public class MainActivity extends AppCompatActivity {
                 return true;
             case R.id.EscolarizacionFP:
                 opcion = "EscolarizacionFP";
-
+                pulsarOpcionDelMenu(opcion);
                 return true;
             case R.id.opcionEso:
                 Intent intent = new Intent(this, MainActivity2.class);

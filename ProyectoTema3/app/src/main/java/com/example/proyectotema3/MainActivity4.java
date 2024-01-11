@@ -117,8 +117,6 @@ public class MainActivity4 extends AppCompatActivity {
     }
 
     private String obtenerFechaComoTexto(int year, int month, int dayOfMonth) {
-        // Convertir año, mes y día a un formato de texto
-        // Aquí puedes personalizar el formato según tus necesidades
         return year + "_" + (month + 1) + "_" + dayOfMonth;
     }
 
@@ -137,7 +135,6 @@ public class MainActivity4 extends AppCompatActivity {
             archivo.close();
             return contenido.toString();
         } catch (Exception e) {
-            // Manejar la excepción según tus necesidades
             return "";
         }
     }

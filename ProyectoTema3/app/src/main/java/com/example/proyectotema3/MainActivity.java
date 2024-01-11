@@ -116,7 +116,6 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 String url = "https://iesarroyoharnina.educarex.es/";
                 try {
-                    // Utiliza ACTION_VIEW en lugar de ACTION_WEB_SEARCH
                     Intent intentoUrl = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
                     startActivity(intentoUrl); // Asegúrate de iniciar la actividad
                 } catch (ActivityNotFoundException e) {
@@ -161,7 +160,6 @@ public class MainActivity extends AppCompatActivity {
         if (opcion.equalsIgnoreCase("EscolarizacionSecundaria")) {
             String url = "https://iesarroyoharnina.educarex.es/index.php?option=com_content&view=article&id=810&Itemid=213497";
             try {
-                // Utiliza ACTION_VIEW en lugar de ACTION_WEB_SEARCH
                 Intent intentoUrl = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
                 startActivity(intentoUrl); // Asegúrate de iniciar la actividad
             } catch (ActivityNotFoundException e) {
@@ -170,7 +168,6 @@ public class MainActivity extends AppCompatActivity {
         } if (opcion.equalsIgnoreCase("EscolarizacionFP")) {
             String url = "https://iesarroyoharnina.educarex.es/index.php?option=com_content&view=article&id=940&Itemid=213573";
             try {
-                // Utiliza ACTION_VIEW en lugar de ACTION_WEB_SEARCH
                 Intent intentoUrl2 = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
                 startActivity(intentoUrl2);
             } catch (ActivityNotFoundException e) {

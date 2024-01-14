@@ -55,7 +55,8 @@ public class MainActivity2 extends AppCompatActivity {
                 startActivity(intent);
                 return true;
             case R.id.itemCerrar:
-                System.exit(0);
+                //System.exit(0);
+                finishAffinity();
                 return true;
             default:
                 return super.onOptionsItemSelected(item);

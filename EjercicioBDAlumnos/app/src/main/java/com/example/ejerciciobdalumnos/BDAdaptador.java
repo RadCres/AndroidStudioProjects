@@ -2,6 +2,7 @@ package com.example.ejerciciobdalumnos;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
 public class BDAdaptador {
@@ -29,4 +30,27 @@ public class BDAdaptador {
         bd.close();
 //Devolvemos el resultado de la inserción
         return resultado;
-    }}
+    }
+
+    //CONSULTAR un alumno con una ID
+    public String consultar(Integer id){
+        bd = baseDatos.getReadableDatabase();
+        String sql = "Select nombre from alumnos where _id = "+id;
+        Cursor cursor = bd.rawQuery(sql, null);
+        String nombre = null;
+
+        if (cursor != null && cursor.moveToFirst()) {
+            nombre = cursor.getString(0);
+        }
+
+        // Cierra el cursor y la base de datos
+        if (cursor != null) {
+            cursor.close();
+        }
+        bd.close();
+
+        return nombre;
+    }
+
+
+}

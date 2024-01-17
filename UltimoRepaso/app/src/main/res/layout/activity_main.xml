@@ -7,42 +7,42 @@
     tools:context=".MainActivity">
 
     <Button
-        android:id="@+id/botonInsertar"
-        android:layout_width="133dp"
-        android:layout_height="61dp"
-        android:text="Insertar"
-        android:textSize="20sp"
+        android:id="@+id/buttonPasarActivityDos"
+        android:layout_width="178dp"
+        android:layout_height="80dp"
+        android:text="Enviar Datos"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.11" />
-
-    <Button
-        android:id="@+id/buttonConsultar"
-        android:layout_width="151dp"
-        android:layout_height="63dp"
-        android:text="Consultar"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.842" />
+        app:layout_constraintVertical_bias="0.787" />
 
     <EditText
-        android:id="@+id/editTextID"
+        android:id="@+id/editTextNombre"
+        style="@style/MisEtiqueta"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:hint="Introduce la ID"
+        android:hint="Introduce tu nombre"
         android:inputType="text"
         android:textAlignment="center"
-        android:textAllCaps="false"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.69" />
+        app:layout_constraintVertical_bias="0.257" />
+
+    <Spinner
+        android:id="@+id/spinnerBanderas"
+        android:layout_width="207dp"
+        android:layout_height="38dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.5" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Tema de la aplicación -->
+    <style name="MisEtiqueta" parent="android:Theme.Holo.Light">
+        <!-- Configuración global del tema, no imprescindible -->
+        <item name="android:textSize">36sp</item>
+        <item name="android:textColor">#5F0A7E</item>
+        <item name="android:background">#DDCA5119</item>
+        <item name="windowNoTitle">true</item>
+        <item name="windowActionBar">false</item>
+
+    </style>
+</resources>

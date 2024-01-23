@@ -34,11 +34,13 @@ public class MainActivity2 extends AppCompatActivity {
 
 
         Intent intent = getIntent();
+        if (intent!=null){
+            String mensaje = intent.getStringExtra("nombre");
+            String rango = intent.getStringExtra("edad");
+            nombreRecibido.setText(mensaje);
+            rangoRecibido.setText(rango);
+        }
 
-        String mensaje = intent.getStringExtra("nombre");
-        String rango = intent.getStringExtra("edad");
-        nombreRecibido.setText(mensaje);
-        rangoRecibido.setText(rango);
 
 
     }

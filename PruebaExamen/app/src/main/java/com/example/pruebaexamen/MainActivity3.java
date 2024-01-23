@@ -27,8 +27,17 @@ public class MainActivity3 extends AppCompatActivity implements MiAdaptador.Inte
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main3);
-        listaLibros = new ArrayList<>();
-        listaLibros = IntStream.rangeClosed(1, 6).boxed().map(String::valueOf).collect(Collectors.toList());
+        listaLibros = new ArrayList<String>();
+        //listaLibros = IntStream.rangeClosed(1, 6).boxed().map(String::valueOf).collect(Collectors.toList());
+
+        for (int i = 1; i <= 6; i++) {
+            listaLibros.add(String.valueOf(i));
+        }
+
+        // Imprimir la lista de libros
+        for (String libro : listaLibros) {
+            System.out.println(libro);
+        }
 
         miAdapterRecicler = new MiAdaptador(this, listaLibros);
         recicler = findViewById(R.id.recicler);

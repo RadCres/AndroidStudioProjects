@@ -1,6 +1,7 @@
 package com.example.segundoejerciciotema4;
 
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
 public class AdapterBD {
@@ -21,7 +22,26 @@ public class AdapterBD {
     }
     return adapterBD;
     }
+    public String consultar(int id){
+        //Abrimos la BD en modo lectura/escritura
+        bd = baseDatos.getReadableDatabase();
 
+        String query = "Select nombre FROM articulo where iden="+1;
+
+        Cursor cursor = bd.rawQuery(query,null);
+        if (cursor != null) cursor.moveToFirst();
+        String name = cursor.getString(0);
+        bd.close();
+
+        return name;
+    }
+
+    public String insertar(){
+        bd.execSQL("INSERT INTO articulo ()");
+        String name = null;
+        return name;
+    }
 
 
 }
+

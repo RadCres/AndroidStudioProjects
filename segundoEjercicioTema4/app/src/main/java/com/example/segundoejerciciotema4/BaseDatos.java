@@ -13,7 +13,7 @@ public class BaseDatos extends SQLiteOpenHelper {
     //Constructor
     public BaseDatos(Context context) {
         //Pasamos al constructor de la superclase el contexto, el nombre de la BD y la Versión
-        super(context,"BD", null, 1);
+        super(context,"BD", null, 2);
         //Almacenamos el contexto
         contexto=context;
     }
@@ -24,7 +24,7 @@ public class BaseDatos extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         try {
             //Creamos la tabla
-            db.execSQL("CREATE TABLE almacen " +
+            db.execSQL("CREATE TABLE articulo " +
                     "(_id INTEGER PRIMARY KEY AUTOINCREMENT, " +
                     " nombre VARCHAR)");
         }
@@ -38,7 +38,7 @@ public class BaseDatos extends SQLiteOpenHelper {
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         try {
             //Eliminamos la tabla anterior (si existe)
-            db.execSQL("DROP TABLE IF EXISTS alumnos");
+            db.execSQL("DROP TABLE IF EXISTS articulo");
             //Llamamos a onCreate para que cree la tabla con las nuevas especificaciones
             onCreate(db);
         }

@@ -9,7 +9,7 @@ public class AdapterBD {
     private BaseDatos baseDatos;
     private SQLiteDatabase bd;
     private static AdapterBD adapterBD;
-    public AdapterBD(Context c){
+    private AdapterBD(Context c){
 //Almacenamos el contexto
         contexto=c;
 //Creamos una instancia a la Base de Datos
@@ -22,26 +22,36 @@ public class AdapterBD {
     }
     return adapterBD;
     }
+
+    public boolean insertar(String name){
+        boolean verif=false;
+        if (name.isEmpty()){
+            bd.execSQL("INSERT INTO articulo (nombre) VALUES (`" + name + "`)");
+            verif=true;
+        }
+        return verif;
+    }
     public String consultar(int id){
         //Abrimos la BD en modo lectura/escritura
         bd = baseDatos.getReadableDatabase();
 
-        String query = "Select nombre FROM articulo where iden="+1;
+        String query = "SELECT nombre FROM articulo WHERE _id= "+ id;
 
         Cursor cursor = bd.rawQuery(query,null);
         if (cursor != null) cursor.moveToFirst();
-        String name = cursor.getString(0);
+        String name = cursor.getString(1);
         bd.close();
 
         return name;
     }
 
-    public String insertar(){
-        bd.execSQL("INSERT INTO articulo ()");
-        String name = null;
-        return name;
+    public boolean eliminar(int id){
+        boolean verif=false;
+            String query = "DELETE FROM vivztable WHERE _id= " + id;
+            bd.execSQL(query);
+            bd.close();
+        return verif;
     }
-
 
 }
 

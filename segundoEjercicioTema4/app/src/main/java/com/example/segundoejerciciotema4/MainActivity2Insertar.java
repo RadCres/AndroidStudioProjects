@@ -9,6 +9,7 @@ import android.view.MenuInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 public class MainActivity2Insertar extends AppCompatActivity {
     private EditText editTextInsert;
@@ -27,10 +28,13 @@ public class MainActivity2Insertar extends AppCompatActivity {
         buttonInsert.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (!editTextInsert.getText().toString().isEmpty())
-                AdapterBD.getInstance(context).insertar(editTextInsert.toString());
+                if (!editTextInsert.getText().toString().isEmpty()) {
+                    AdapterBD.getInstance(context).insertar(editTextInsert.getText().toString());
+                    Toast.makeText(context, "Insertado", Toast.LENGTH_SHORT).show();
+                }
             }
         });
+
     }
 
 }

@@ -29,8 +29,10 @@ public class MainActivity2Insertar extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (!editTextInsert.getText().toString().isEmpty()) {
-                    AdapterBD.getInstance(context).insertar(editTextInsert.getText().toString());
+                    Long longito = AdapterBD.getInstance(context).insertar(editTextInsert.getText().toString());
                     Toast.makeText(context, "Insertado", Toast.LENGTH_SHORT).show();
+                    if (longito == -1)
+                        Toast.makeText(context, "No se ha insertado nada", Toast.LENGTH_SHORT).show();
                 }
             }
         });

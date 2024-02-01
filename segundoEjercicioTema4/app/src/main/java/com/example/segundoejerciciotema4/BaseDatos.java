@@ -13,7 +13,7 @@ public class BaseDatos extends SQLiteOpenHelper {
     //Constructor
     public BaseDatos(Context context) {
         //Pasamos al constructor de la superclase el contexto, el nombre de la BD y la Versión
-        super(context,"BD", null, 2);
+        super(context,"BD.db", null, 2);
         //Almacenamos el contexto
         contexto=context;
     }

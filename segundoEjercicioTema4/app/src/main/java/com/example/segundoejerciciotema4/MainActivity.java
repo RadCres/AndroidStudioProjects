@@ -42,6 +42,11 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
 
                 return true;
+            case R.id.itemModificar:
+                intent = new Intent(this, MainActivity2Modificar.class);
+                startActivity(intent);
+
+                return true;
             default:
                 return super.onOptionsItemSelected(item);
         }

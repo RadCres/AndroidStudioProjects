@@ -8,7 +8,7 @@
     tools:context=".MainActivity2Modificar">
 
     <EditText
-        android:id="@+id/editTextText"
+        android:id="@+id/editTextModificar"
         android:layout_width="215dp"
         android:layout_height="50dp"
         android:ems="10"
@@ -18,13 +18,13 @@
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintHorizontal_bias="0.551"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.3" />
+        app:layout_constraintVertical_bias="0.324" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/buttonModificar"
         android:layout_width="153dp"
         android:layout_height="66dp"
         android:text="Modificar"
@@ -36,15 +36,29 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.821" />
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="146dp"
-        android:layout_height="42dp"
+    <EditText
+        android:id="@+id/editTextModificarAbajo"
+        android:layout_width="188dp"
+        android:layout_height="41dp"
         android:background="#B2ACAC"
+        android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.5" />
+        app:layout_constraintVertical_bias="0.627" />
+
+    <Button
+        android:id="@+id/buttonConsultarParaModificar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Consultar Id"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.475" />
 </androidx.constraintlayout.widget.ConstraintLayout>

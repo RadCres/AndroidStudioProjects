@@ -27,17 +27,19 @@ public class MainActivity2Eliminar extends AppCompatActivity {
         buttonElimin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if (editTextElimin.getText().toString().isEmpty()){
+                    Toast.makeText(context, "No existe para borrar", Toast.LENGTH_SHORT).show();
+                    return;
+                }
                 Log.d("MyApp", "onClick: Start");
                 try {
-                    if (!editTextElimin.getText().toString().isEmpty()){
                         Log.d("MyApp", "onClick: Before eliminar");
                         AdapterBD.getInstance(context).eliminar(Integer.valueOf(editTextElimin.getText().toString()));
                         Log.d("MyApp", "onClick: After eliminar");
                         Toast.makeText(context, "eliminado", Toast.LENGTH_SHORT).show();
-                    }
                 } catch (Exception e) {
+                    Toast.makeText(context, "No se ha borrado nada", Toast.LENGTH_SHORT).show();
                     e.printStackTrace();
-                    Toast.makeText(context, "No existe para borrar", Toast.LENGTH_SHORT).show();
                 }
                 Log.d("MyApp", "onClick: End");
             }

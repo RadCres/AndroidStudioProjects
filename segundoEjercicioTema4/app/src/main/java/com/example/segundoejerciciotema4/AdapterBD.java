@@ -1,12 +1,13 @@
 package com.example.segundoejerciciotema4;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteStatement;
 import android.util.Log;
 
-public class AdapterBD {
+public class AdapterBD{
     private Context contexto;
     private BaseDatos baseDatos;
     private SQLiteDatabase bd;
@@ -26,80 +27,49 @@ public class AdapterBD {
     return adapterBD;
     }
 
-    /*public boolean insertar(String name){
-        boolean verif = false;
-        if (!name.isEmpty()) {
-            bd.execSQL("INSERT INTO articulo (nombre) VALUES ('" + name + "')");
-            verif = true;
-        }
-        return verif;
-    }*/
-    public boolean insertar(String name) {
-        boolean verif = false;
-        if (!name.isEmpty()) {
-            try {
-                // Evitar problemas con consultas SQL mal formadas y utilizar PreparedStatement
-                String query = "INSERT INTO articulo (nombre) VALUES (?)";
-                SQLiteStatement statement = bd.compileStatement(query);
-                statement.bindString(1, name);
-                statement.executeInsert();
-
-                verif = true;
-                Log.d("MyApp", "Insertado correctamente: " + name);
-            } catch (Exception e) {
-                e.printStackTrace();
-                // Manejar cualquier excepción que pueda ocurrir durante la inserción
-                Log.e("MyApp", "Error al insertar en la base de datos: " + e.getMessage());
-            }
-        } else {
-            Log.d("MyApp", "No se realizó la inserción porque el nombre está vacío.");
-        }
-        return verif;
+    public Long insertar(String name){
+        bd =baseDatos.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("nombre", name);
+        Long longito = bd.insert("articulo",null,contentValues);
+        bd.close();
+        return longito;
     }
+    public String consultar(int id){
 
-
-
-    /* public String consultar(int id){
         //Abrimos la BD en modo lectura/escritura
         bd = baseDatos.getReadableDatabase();
-
-        String query = "SELECT nombre FROM articulo WHERE _id= "+ id;
-
+        String query = "SELECT nombre FROM articulo WHERE _id = "+ id;
+        Log.e("miapp", query);
         Cursor cursor = bd.rawQuery(query,null);
-        if (cursor != null) cursor.moveToFirst();
-        String name = cursor.getString(1);
+        String name="";
+        if (cursor != null){
+            cursor.moveToFirst();
+            name = cursor.getString(0);
+        }
         bd.close();
-
         return name;
-    }*/
-   public String consultar(int id){
-       //Abrimos la BD en modo lectura/escritura
-       bd = baseDatos.getReadableDatabase();
-
-       String query = "SELECT nombre FROM articulo WHERE _id= "+ id;
-
-       Cursor cursor = bd.rawQuery(query,null);
-
-       String name = ""; // Inicializa el nombre antes de intentar acceder al cursor
-
-       if (cursor != null && cursor.moveToFirst()) {
-           name = cursor.getString(0); // El índice 0 representa la primera columna (nombre)
-       }
-
-       if (cursor != null) cursor.close(); // Cierra el cursor para liberar recursos
-       bd.close();
-
-       return name;
-   }
-
-
-    public boolean eliminar(int id){
-        boolean verif=false;
-            String query = "DELETE FROM vivztable WHERE _id= " + id;
-            bd.execSQL(query);
-            bd.close();
-        return verif;
     }
 
+    public void eliminar(int id){
+            bd = baseDatos.getWritableDatabase();
+            String query = "DELETE FROM articulo WHERE _id = " + id;
+            bd.execSQL(query);
+            bd.close();
+    }
+
+    public void modificar(int id, String name){
+        bd = baseDatos.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("nombre",name);
+        bd.update("articulo",contentValues, "_id = ?", new String[]{String.valueOf(id)});
+
+        bd.close();
+    }
+    public void modificarFACIL(int id, String name){
+        bd = baseDatos.getWritableDatabase();
+        String query = "UPDATE articulo set nombre = " + name + "WHERE _id = " + id;
+        bd.close();
+    }
 }
 

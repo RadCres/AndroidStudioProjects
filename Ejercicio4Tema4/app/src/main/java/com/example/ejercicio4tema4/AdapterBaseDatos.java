@@ -68,7 +68,7 @@ public class AdapterBaseDatos {
     public List<String> consultarNombrePorDepartamento(int departamento){
         bd = baseDatos.getReadableDatabase();
         List<String> listaEmpleadosPorDepartamento = new ArrayList<>();
-        String query = "SELECT Nombre FROM empleados WHERE NumeroDepartamento   = " + departamento;
+        String query = "SELECT Nombre FROM empleados WHERE Departamento = " + departamento;
         Cursor cursor = bd.rawQuery(query,null);
         try{
             while (cursor != null && cursor.moveToNext()){
@@ -81,6 +81,9 @@ public class AdapterBaseDatos {
 
         bd.close();
         return listaEmpleadosPorDepartamento;
+    }
+    public void incrementarSalario(){
+        
     }
 
 }

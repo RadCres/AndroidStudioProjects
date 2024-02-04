@@ -1,4 +1,4 @@
-package com.example.repasorecuperacion;
+package com.example.ejercicio4tema4;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -12,13 +12,13 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.List;
 
 public class MiAdaptador extends RecyclerView.Adapter<MiAdaptador.Holder> {
-    private List<String> comentarios;
+    private List<String> empleados;
     private LayoutInflater mInflater;
     private IntemClickListener intemClickListener;
 
-    MiAdaptador(Context contexto, List<String> comentario) {
+    MiAdaptador(Context contexto, List<String> empleado) {
         this.mInflater = LayoutInflater.from(contexto);
-        this.comentarios = comentario;
+        this.empleados = empleado;
     }
 
 
@@ -30,32 +30,32 @@ public class MiAdaptador extends RecyclerView.Adapter<MiAdaptador.Holder> {
 
     @Override
     public void onBindViewHolder(@NonNull MiAdaptador.Holder holder, int position) {
-        holder.fillContent(comentarios.get(position));
+        holder.fillContent(empleados.get(position));
     }
 
     @Override
     public int getItemCount() {
-        return comentarios.size();
+        return empleados.size();
     }
 
-    public void setClickListener(IntemClickListener mainActivity3) {
-        this.intemClickListener = mainActivity3;
+    public void setClickListener(IntemClickListener mainActivity2) {
+        this.intemClickListener = mainActivity2;
     }
 
     public class Holder extends RecyclerView.ViewHolder implements View.OnClickListener{
-        private TextView textComentario;
+        private TextView nombre;
 
 
         public Holder(@NonNull View itemView) {
             super(itemView);
-            textComentario = itemView.findViewById(R.id.textViewComentario);
+            nombre = itemView.findViewById(R.id.textViewNombreSalario);
             itemView.setOnClickListener(this);
 
         }
 
-        public void fillContent(String comentario) {
-            this.textComentario.setText(comentario.toString());
-
+        public void fillContent(String empleado) {
+         //   this.textComentario.setText(comentario.toString());
+            this.nombre.setText(empleado.toString());
         }
 
         @Override

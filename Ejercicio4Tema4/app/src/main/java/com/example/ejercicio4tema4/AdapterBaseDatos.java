@@ -41,6 +41,7 @@ public class AdapterBaseDatos {
         bd = baseDatos.getWritableDatabase();
         String query = "DELETE FROM empleados WHERE NumeroEmpleado =" + id;
         bd.execSQL(query);
+        bd.close();
     }
 
     public List<String> consultarNombreSalario() {
@@ -83,7 +84,61 @@ public class AdapterBaseDatos {
         return listaEmpleadosPorDepartamento;
     }
     public void incrementarSalario(){
-        
+        bd = baseDatos.getWritableDatabase();
+        String query = "UPDATE empleados SET Salario = Salario + (Salario*0.10)";
+        bd.execSQL(query);
+        bd.close();
+    }
+
+    public String consultarTodosLosDatos(int id){
+        bd = baseDatos.getReadableDatabase();
+        String datos="";
+        String query = "SELECT * FROM empleados WHERE NumeroEmpleado = " + id;
+        Cursor cursor = bd.rawQuery(query,null);
+        if (cursor != null &&  cursor.moveToFirst()){
+
+            datos = cursor.getString(0)+"-"+cursor.getString(1)+"-"+
+                    cursor.getString(2)+"-"+cursor.getString(3)+"-"+
+                    cursor.getString(4)+"-"+cursor.getString(5)+"-"+
+                    cursor.getString(6);
+        } if (cursor != null) {
+            cursor.close();
+        }
+        bd.close();
+        return datos;
+    }
+
+    public String getEmail(int id){
+        bd = baseDatos.getReadableDatabase();
+        String email="";
+        String query = "SELECT Email FROM empleados WHERE NumeroEmpleado = " + id;
+        Cursor cursor = bd.rawQuery(query,null);
+        if (cursor != null &&  cursor.moveToFirst()){
+            email = cursor.getString(0);
+        } if (cursor != null) {
+            cursor.close();
+        }
+        bd.close();
+        return email;
+    }
+    public String getTelefono(int id){
+        bd = baseDatos.getReadableDatabase();
+        String telefono="";
+        String query = "SELECT Telefono FROM empleados WHERE NumeroEmpleado = " + id;
+        Cursor cursor = bd.rawQuery(query,null);
+        if (cursor != null &&  cursor.moveToFirst()){
+            telefono = cursor.getString(0);
+        } if (cursor != null) {
+            cursor.close();
+        }
+        bd.close();
+        return telefono;
+    }
+
+    public void setEmailYTelefono(String email, String telefono,int id){
+        bd = baseDatos.getWritableDatabase();
+        String query = "UPDATE empleados SET Email = '"+ email +"', Telefono = '"+ telefono +"' WHERE NumeroEmpleado =" + id;
+        bd.execSQL(query);
     }
 
 }

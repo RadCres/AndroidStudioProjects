@@ -29,7 +29,7 @@ public class MainActivity2 extends AppCompatActivity implements MiAdaptador.Inte
     private List<String> listaNombresDepart = new ArrayList<>();
     private EditText editTextElim;
     private Button buttonElim;
-
+    private Button buttonIncrem;
 
 
     @Override
@@ -42,11 +42,21 @@ public class MainActivity2 extends AppCompatActivity implements MiAdaptador.Inte
         buttonCon = findViewById(R.id.buttonConsultarPorDep);
         editTextElim = findViewById(R.id.editTextEliminarId);
         buttonElim = findViewById(R.id.buttonEliminar);
-
+        buttonIncrem = findViewById(R.id.buttonIncrementarSalario);
 
         nombreSalarioEmpleados();
         nombrePorDepart();
         eliminarEmpleado();
+        buttonIncrem.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                bdAdapter.incrementarSalario();
+                listaEmpleados.clear();
+                listaEmpleados.addAll(bdAdapter.consultarNombreSalario());
+                miAdaptador.notifyDataSetChanged();
+            }
+        }
+        );
     }
     public boolean onCreateOptionsMenu(Menu menu){
         MenuInflater inflater = getMenuInflater();
@@ -63,8 +73,8 @@ public class MainActivity2 extends AppCompatActivity implements MiAdaptador.Inte
             case R.id.NombreSalario:
                 recyclerView.setVisibility(View.VISIBLE);
                 nombreSalarioEmpleados();
-                editTextDepart.setVisibility(View.INVISIBLE);
-                buttonCon.setVisibility(View.INVISIBLE);
+                editTextDepart.setVisibility(View.VISIBLE);
+                buttonCon.setVisibility(View.VISIBLE);
                 return true;
             case R.id.NombrePorDepartamento:
                 editTextDepart.setVisibility(View.VISIBLE);
@@ -138,8 +148,6 @@ public class MainActivity2 extends AppCompatActivity implements MiAdaptador.Inte
             Toast.makeText(context, "Error al eliminar empleado", Toast.LENGTH_SHORT).show();
         }
     }
-
-
 
 
     @Override

@@ -38,9 +38,11 @@ public class MainActivity extends AppCompatActivity {
                         Intent intentActivity2 = new Intent(v.getContext(),MainActivity2.class);
                         startActivity(intentActivity2);
                     }else{
-                        Intent intentActivity3 = new Intent(v.getContext(),MainActivity3.class);
-                        intentActivity3.putExtra("nombreEmpleado",editTextNumb.getText().toString());
+                        Intent intentActivity3 = new Intent(v.getContext(), MainActivity3.class);
+                        String numeroEmpleado = editTextNumb.getText().toString();
+                        intentActivity3.putExtra("nombreEmpleado", numeroEmpleado);
                         startActivity(intentActivity3);
+
                     }
                 }
                 catch (Exception e){

@@ -10,8 +10,10 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -19,6 +21,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class MainActivity2 extends AppCompatActivity implements MiAdaptador.IntemClickListener {
+    private ListView listView;
     private AdapterBaseDatos bdAdapter;
     private Context context = this;
     private List<String> listaEmpleados = new ArrayList<>();
@@ -43,6 +46,7 @@ public class MainActivity2 extends AppCompatActivity implements MiAdaptador.Inte
         editTextElim = findViewById(R.id.editTextEliminarId);
         buttonElim = findViewById(R.id.buttonEliminar);
         buttonIncrem = findViewById(R.id.buttonIncrementarSalario);
+        listView = findViewById(R.id.listViewMain2);
 
         nombreSalarioEmpleados();
         nombrePorDepart();
@@ -57,6 +61,8 @@ public class MainActivity2 extends AppCompatActivity implements MiAdaptador.Inte
             }
         }
         );
+
+        buttonElim.setOnClickListener(v -> eliminarEmpleado());
     }
     public boolean onCreateOptionsMenu(Menu menu){
         MenuInflater inflater = getMenuInflater();
@@ -91,6 +97,8 @@ public class MainActivity2 extends AppCompatActivity implements MiAdaptador.Inte
             List<String> nombresSalarios = AdapterBaseDatos.getInstance(context).consultarNombreSalario();
             listaEmpleados.addAll(nombresSalarios);
             recyclerView.setLayoutManager(new LinearLayoutManager(this));
+            ArrayAdapter<String> adapter= new ArrayAdapter<>(this, android.R.layout.simple_list_item_1,listaEmpleados);
+            listView.setAdapter(adapter);
             miAdaptador = new MiAdaptador(this, listaEmpleados);
             miAdaptador.setClickListener(this);
             recyclerView.setAdapter(miAdaptador);
@@ -134,7 +142,7 @@ public class MainActivity2 extends AppCompatActivity implements MiAdaptador.Inte
                     .filter(empleado -> !empleado.contains(String.valueOf(idEmpleado)))
                     .collect(Collectors.toList());
 
-           miAdaptador.notifyDataSetChanged();
+           recyclerView.setAdapter(new MiAdaptador(context,listaEmpleados));
 
            editTextElim.setText("");
 

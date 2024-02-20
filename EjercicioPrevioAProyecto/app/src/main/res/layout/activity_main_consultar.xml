@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#8A4A98"
+    android:background="#C56F3C7B"
     tools:context=".MainActivityConsultar">
 
 </androidx.constraintlayout.widget.ConstraintLayout>

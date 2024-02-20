@@ -11,7 +11,7 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 
-public class Consultar extends AsyncTask<String, Void, Void> {
+public class Consultar extends AsyncTask<Object, Object, String> {
     String linea = null;
     private TaskCompleted listener;
 
@@ -19,16 +19,11 @@ public class Consultar extends AsyncTask<String, Void, Void> {
         this.listener =listener;
     }
 
-    protected void onPostExecute(String s){
-        super.onPostExecute(s);
-        listener.onTaskCompleted(linea);
-    }
-
     @Override
-    protected Void doInBackground(String... params) {
+    protected String doInBackground(Object... objects) {
         URL url = null;
         try {
-            url = new URL("https://files.000webhost.com/consultar.php");
+            url = new URL("https://knobbier-model.000webhostapp.com/seleccionar.php");
             //Establecemos conexión con el servicio web
             HttpURLConnection clientehttp = (HttpURLConnection) url.openConnection();
             //Leemos el string que nos devuelve el webservice
@@ -47,4 +42,12 @@ public class Consultar extends AsyncTask<String, Void, Void> {
 
         return null;
     }
+
+
+    protected void onPostExecute(String s){
+        super.onPostExecute(s);
+        listener.onTaskCompleted(linea);
+    }
+
+
 }

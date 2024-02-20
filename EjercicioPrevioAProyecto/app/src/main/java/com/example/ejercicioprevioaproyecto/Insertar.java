@@ -17,7 +17,7 @@ public class Insertar extends AsyncTask<String, Void, Void> {
         HttpURLConnection clienthttp=null;
         OutputStream salida = null;
         try {
-            URL url = new URL("https://files.000webhost.com/insertar.php");
+            URL url = new URL("https://knobbier-model.000webhostapp.com/insertar.php");
             //Establecemos conexión con el servicio web
             clienthttp = (HttpURLConnection) url.openConnection();
             //Activamos el método POST

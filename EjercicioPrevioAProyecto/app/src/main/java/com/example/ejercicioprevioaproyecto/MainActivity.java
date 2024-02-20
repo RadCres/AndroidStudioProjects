@@ -2,8 +2,10 @@ package com.example.ejercicioprevioaproyecto;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
@@ -19,9 +21,12 @@ public class MainActivity extends AppCompatActivity implements TaskCompleted{
         botonInsertar = findViewById(R.id.buttonInsertar);
 
         botonConsultar.setOnClickListener(v -> {
-            Intent intent = new Intent(v.getContext(),MainActivityConsultar.class);
-            startActivity(intent);
-            Consultar consultar = new Consultar(MainActivityConsultar.class);
+//            Intent intent = new Intent(v.getContext(),MainActivityConsultar.class);
+//            startActivity(intent);
+
+            Log.i("Test", "listener activo ");
+            Consultar consultar = new Consultar(MainActivity.this);
+            consultar.execute();
         });
         botonInsertar.setOnClickListener(v -> {
             Intent intent = new Intent(v.getContext(),MainActivityInsertar.class);
@@ -31,6 +36,6 @@ public class MainActivity extends AppCompatActivity implements TaskCompleted{
 
     @Override
     public void onTaskCompleted(String s) {
-        Toast.makeText(MainActivity.this, "Resultado: "+s, Toast.LENGTH_SHORT).show();
+        Log.i("AAAA", "Resultado: "+s);
     }
 }

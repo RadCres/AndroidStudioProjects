@@ -7,4 +7,12 @@
     android:background="#EE004D40"
     tools:context=".MainActivityMenuInicioSesion">
 
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="299dp"
+        android:layout_height="411dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.381" />
 </androidx.constraintlayout.widget.ConstraintLayout>

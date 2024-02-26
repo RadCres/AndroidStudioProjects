@@ -10,7 +10,7 @@ import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
     private EditText usuario,contrasena;
-    private Button iniciarSesion, crearCuenta;
+    private Button iniciarSesion;
     private TextView contrasenaOlvidada;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,13 +20,13 @@ public class MainActivity extends AppCompatActivity {
         usuario = findViewById(R.id.editTextUsuario);
         contrasena = findViewById(R.id.editTextPassword);
         iniciarSesion = findViewById(R.id.buttonIniciarSesion);
-        crearCuenta = findViewById(R.id.buttonCrearCuenta);
+
         contrasenaOlvidada = findViewById(R.id.textViewContraseñaOlvidada);
 
-        crearCuenta.setOnClickListener(v -> {
+        iniciarSesion.setOnClickListener(v -> {
             contrasenaOlvidada.setVisibility(View.INVISIBLE);
-            crearCuenta.setVisibility(View.INVISIBLE);
-            iniciarSesion.setText("Crear cuenta");
+            iniciarSesion.setVisibility(View.INVISIBLE);
+
             //Hacer los clausulas de guarda para pasar al activity de menus
         });
 

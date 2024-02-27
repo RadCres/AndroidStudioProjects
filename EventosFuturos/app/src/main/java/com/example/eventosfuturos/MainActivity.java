@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.Switch;
 import android.widget.TextView;
@@ -35,15 +36,16 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-    }
-    private boolean checkSwitch(){
-        if (switchBoxSesion.isChecked()){
-            switchBoxSesion.setText("Registrarse");
-            usuario.setVisibility(View.VISIBLE);
-            iniciarSesion.setText("Registrarse");
-        }
-        usuario.setVisibility(View.INVISIBLE);
-
-        return false;
+        switchBoxSesion.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            if(isChecked == true){
+                switchBoxSesion.setText("Registrarse");
+                usuario.setVisibility(View.VISIBLE);
+                iniciarSesion.setText("Registrarse");
+            }else {
+                switchBoxSesion.setText("Iniciar Sesión");
+                usuario.setVisibility(View.INVISIBLE);
+                iniciarSesion.setText("Iniciar sesión");
+            }
+        });
     }
 }

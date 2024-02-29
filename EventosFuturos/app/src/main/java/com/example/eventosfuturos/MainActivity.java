@@ -11,7 +11,9 @@ import android.widget.EditText;
 import android.widget.Switch;
 import android.widget.TextView;
 
-public class MainActivity extends AppCompatActivity {
+import com.example.eventosfuturos.service.TaskCompleted;
+
+public class MainActivity extends AppCompatActivity implements TaskCompleted<Boolean> {
     private EditText usuario,contrasena,email;
     private Button iniciarSesion;
     private TextView contrasenaOlvidada;
@@ -47,5 +49,10 @@ public class MainActivity extends AppCompatActivity {
                 iniciarSesion.setText("Iniciar sesión");
             }
         });
+    }
+
+    @Override
+    public void onTaskCompleted(Boolean t) {
+
     }
 }

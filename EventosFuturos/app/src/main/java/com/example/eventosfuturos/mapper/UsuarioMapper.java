@@ -1,6 +1,6 @@
 package com.example.eventosfuturos.mapper;
 
-import com.example.eventosfuturos.model.entity.Usuario;
+import com.example.eventosfuturos.model.dto.Usuario;
 
 public class UsuarioMapper implements Mapper<String,Usuario>{
     //TODO

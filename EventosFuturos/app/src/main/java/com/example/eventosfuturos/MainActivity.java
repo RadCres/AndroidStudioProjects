@@ -11,9 +11,10 @@ import android.widget.EditText;
 import android.widget.Switch;
 import android.widget.TextView;
 
+import com.example.eventosfuturos.model.dto.Usuario;
 import com.example.eventosfuturos.service.TaskCompleted;
 
-public class MainActivity extends AppCompatActivity implements TaskCompleted<Boolean> {
+public class MainActivity extends AppCompatActivity implements TaskCompleted<Usuario> {
     private EditText usuario,contrasena,email;
     private Button iniciarSesion;
     private TextView contrasenaOlvidada;
@@ -52,7 +53,12 @@ public class MainActivity extends AppCompatActivity implements TaskCompleted<Boo
     }
 
     @Override
-    public void onTaskCompleted(Boolean t) {
-
+    public void onTaskCompleted(Usuario usuario) {
+        if(usuario==null) {
+            //mostrar que las credenciales son erroneas
+            return;
+        }
+        //guardar usuario en preferencias
+        //intent a la siguiente activity
     }
 }

@@ -2,6 +2,7 @@ package com.example.eventosfuturos;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -25,7 +26,8 @@ public class ResumenActivity extends AppCompatActivity implements TaskCompleted<
 
         });
         buttonCalendario.setOnClickListener(v -> {
-
+            Intent intent = new Intent(v.getContext(), MainActivityCalendario.class);
+            startActivity(intent);
         });
     }
 

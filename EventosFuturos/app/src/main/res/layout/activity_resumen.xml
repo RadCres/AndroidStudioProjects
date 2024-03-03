@@ -4,12 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#EE004D40"
+    android:background="#EE3DCAB3"
     tools:context=".MainActivityMenuInicioSesion">
 
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="299dp"
         android:layout_height="411dp"
+        android:background="#597B7272"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -19,7 +20,7 @@
         tools:listitem="@layout/recycler_view_item" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/buttonMisGrupos"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:backgroundTint="#192839"
@@ -34,7 +35,7 @@
         app:layout_constraintVertical_bias="0.775" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/buttonCalendario"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:backgroundTint="#192839"

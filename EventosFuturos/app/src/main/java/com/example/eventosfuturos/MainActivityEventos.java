@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -31,7 +32,7 @@ public class MainActivityEventos extends AppCompatActivity {
         editFecha = findViewById(R.id.editTextFecha);
         editHora = findViewById(R.id.editTextHora);
         buttonCrearEvento.setOnClickListener(v -> {
-
+            Toast.makeText(this, "Evento Creado", Toast.LENGTH_SHORT).show();
         });
     }
 }

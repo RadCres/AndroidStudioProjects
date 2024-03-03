@@ -21,5 +21,9 @@ public class Usuario {
         this.nombre = nombre;
     }
 
+    public String getEmail(){
+        return this.email;
+    }
+
 
 }

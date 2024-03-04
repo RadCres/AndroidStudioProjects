@@ -14,14 +14,16 @@ import com.example.eventosfuturos.adapter.MiAdaptador;
 import com.example.eventosfuturos.model.dto.Evento;
 import com.example.eventosfuturos.model.dto.Usuario;
 import com.example.eventosfuturos.service.TaskCompleted;
+import com.example.eventosfuturos.service.impl.GetEventos;
 
+import java.util.ArrayList;
 import java.util.List;
 
-public class ResumenActivity extends AppCompatActivity implements TaskCompleted<Usuario>, MiAdaptador.IntemClickListener{
+public class ResumenActivity extends AppCompatActivity implements TaskCompleted<List<Evento>>, MiAdaptador.IntemClickListener{
     private Button buttonMisGrupos, buttonCalendario;
     private RecyclerView recicler;
     private MiAdaptador miAdaptador;
-    private List<Evento> listaEventos = new OM_Eventos().ListaEventos();
+    private List<Evento> listaEventos = new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,12 +46,17 @@ public class ResumenActivity extends AppCompatActivity implements TaskCompleted<
         recicler.setAdapter(miAdaptador);
         miAdaptador.setClickListener(this);
 
+        GetEventos getEventos = new GetEventos(this);
+        String[] nombre = {getIntent().getStringExtra("nombre")};
+        getEventos.execute(nombre);
     }
 
 
     @Override
-    public void onTaskCompleted(Usuario usuario) {
-
+    public void onTaskCompleted(List<Evento> eventos) {
+        listaEventos.clear();
+        listaEventos.addAll(eventos);
+        miAdaptador.notifyDataSetChanged();
     }
 
     @Override

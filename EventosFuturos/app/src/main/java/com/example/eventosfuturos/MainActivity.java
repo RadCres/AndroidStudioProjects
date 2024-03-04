@@ -80,6 +80,7 @@ public class MainActivity extends AppCompatActivity implements TaskCompleted<Usu
         }
         Toast.makeText(this, usuario.getNombre(), Toast.LENGTH_SHORT).show();
         Intent intent = new Intent(this, ResumenActivity.class);
+        intent.putExtra("nombre", usuario.getNombre());
         startActivity(intent);
 
     }

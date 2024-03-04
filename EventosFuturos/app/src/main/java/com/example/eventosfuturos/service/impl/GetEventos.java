@@ -72,7 +72,7 @@ public class GetEventos extends AsyncTask<String,Object, List<Evento>> {
         } catch (IOException e) {
             throw new RuntimeException(e);
         } catch (JSONException e) {
-            throw new RuntimeException(e);
+            return new ArrayList<Evento>();
         }
     }
 

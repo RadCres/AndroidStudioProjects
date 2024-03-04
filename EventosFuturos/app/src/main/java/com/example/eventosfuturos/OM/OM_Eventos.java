@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class OM_Eventos {
-    public void ListaEventos(){
+    public List<Evento> ListaEventos(){
         List<Evento> eventos = new ArrayList<>();
         Evento evento1 = new Evento(Timestamp.valueOf("2024-03-05 10:00:00"), "Concierto en Vivo", "Concierto de rock en el centro de la ciudad", "BandaX");
         Evento evento2 = new Evento(Timestamp.valueOf("2024-03-08 15:30:00"), "Exposición de Arte", "Mostra de pinturas y esculturas contemporáneas", "Artistas Unidos");
@@ -15,6 +15,7 @@ public class OM_Eventos {
         eventos.add(evento1);
         eventos.add(evento2);
         eventos.add(evento3);
+        return eventos;
     }
 
 

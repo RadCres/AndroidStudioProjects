@@ -19,8 +19,9 @@ public class MiAdaptador extends RecyclerView.Adapter<MiAdaptador.Holder> {
     private LayoutInflater mInflater;
     private IntemClickListener intemClickListener;
 
-    MiAdaptador(Context contexto, List<Evento> eventos) {
+    public MiAdaptador(Context contexto, List<Evento> eventos) {
         this.mInflater = LayoutInflater.from(contexto);
+        this.eventos = eventos;
 
     }
 

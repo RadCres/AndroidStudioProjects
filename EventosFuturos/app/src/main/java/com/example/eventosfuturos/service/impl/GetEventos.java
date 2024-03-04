@@ -19,6 +19,7 @@ import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -60,7 +61,7 @@ public class GetEventos extends AsyncTask<Usuario,Object, List<Evento>> {
             for (int i = 0; i < jsonArray.length(); i++) {
                 JSONObject jsonObject = jsonArray.getJSONObject(i);
                 // TODO Evento evento = new Evento(jsonObject.getString("titulo"));
-                Evento evento = new Evento();
+                Evento evento = new Evento(Timestamp.valueOf("2024-03-05 10:00:00"), "Concierto en Vivo", "Concierto de rock en el centro de la ciudad", "BandaX");
                 eventos.add(evento);
             }
             return eventos;

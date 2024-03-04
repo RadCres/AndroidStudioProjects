@@ -8,6 +8,7 @@
     tools:context=".MainActivityMenuInicioSesion">
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recicler"
         android:layout_width="299dp"
         android:layout_height="411dp"
         android:background="#597B7272"

@@ -17,6 +17,8 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import java.sql.Timestamp;
+
 public class MainActivityCalendario extends AppCompatActivity {
     private Context context = this;
     private Button botonNuevoEvento;
@@ -36,7 +38,7 @@ public class MainActivityCalendario extends AppCompatActivity {
         calendarView = findViewById(R.id.calendarView);
        botonNuevoEvento.setOnClickListener(v -> {
            Intent intent = new Intent(context, MainActivityEventos.class);
-           intent.putExtra("Date", calendarView.getDate());
+           intent.putExtra("Date", new Timestamp(calendarView.getDate()).toString());
            startActivity(intent);
        });
 

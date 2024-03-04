@@ -15,6 +15,9 @@
         android:theme="@style/Theme.EventosFuturos"
         tools:targetApi="31">
         <activity
+            android:name=".MainActivityGrupos"
+            android:exported="false" />
+        <activity
             android:name=".ResumenActivity"
             android:exported="false" />
         <activity

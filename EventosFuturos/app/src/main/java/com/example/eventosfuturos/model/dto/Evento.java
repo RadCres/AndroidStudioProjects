@@ -1,9 +1,10 @@
 package com.example.eventosfuturos.model.dto;
 
 import java.sql.Date;
+import java.sql.Timestamp;
 
 public class Evento {
-    private Date fecha;
+    private Timestamp fecha;
     private String titulo;
     private String descripcion;
     private String nombreGrupo;

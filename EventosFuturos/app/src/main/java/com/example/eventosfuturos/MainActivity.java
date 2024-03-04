@@ -16,6 +16,7 @@ import android.widget.Toast;
 import com.example.eventosfuturos.model.dto.Usuario;
 import com.example.eventosfuturos.service.TaskCompleted;
 import com.example.eventosfuturos.service.impl.InicioSesion;
+import com.example.eventosfuturos.service.impl.RegistroUsuario;
 
 public class MainActivity extends AppCompatActivity implements TaskCompleted<Usuario> {
     private EditText usuario,contrasena,email;
@@ -53,10 +54,22 @@ public class MainActivity extends AppCompatActivity implements TaskCompleted<Usu
 
     private void setLogInListener() {
         iniciarSesion.setOnClickListener(v -> {
-            InicioSesion inicioSesion = new InicioSesion(this);
-            inicioSesion.execute(email.getText().toString(),contrasena.getText().toString());
-            //Hacer los clausulas de guarda para pasar al activity de menus
+            if(switchBoxSesion.isChecked()){
+                signIn();
+            }else{
+                logIn();
+            }
         });
+    }
+
+    private void logIn(){
+        InicioSesion inicioSesion = new InicioSesion(this);
+        inicioSesion.execute(email.getText().toString(),contrasena.getText().toString());
+    }
+
+    private void signIn(){
+        RegistroUsuario registroUsuario = new RegistroUsuario(this);
+        registroUsuario.execute(usuario.getText().toString(),email.getText().toString(),contrasena.getText().toString());
     }
 
     @Override

@@ -31,6 +31,10 @@ public class MainActivityEventos extends AppCompatActivity {
         editDescripcion = findViewById(R.id.editTextDescripcion);
         editFecha = findViewById(R.id.editTextFecha);
         editHora = findViewById(R.id.editTextHora);
+        buttonCrearEvento = findViewById(R.id.buttonCrearEvento);
+        String fecha = getIntent().getStringExtra("Date");
+
+        editFecha.setText(fecha.toString());
         buttonCrearEvento.setOnClickListener(v -> {
             Toast.makeText(this, "Evento Creado", Toast.LENGTH_SHORT).show();
         });

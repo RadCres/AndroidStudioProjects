@@ -35,7 +35,7 @@
         app:layout_constraintVertical_bias="0.042" />
 
     <Button
-        android:id="@+id/buttonCrearEventoNuevo"
+        android:id="@+id/buttonNuevoEvento"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Crear Evento Nuevo"

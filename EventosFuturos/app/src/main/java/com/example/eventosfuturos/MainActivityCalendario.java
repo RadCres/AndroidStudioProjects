@@ -6,6 +6,10 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.CalendarView;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -14,7 +18,9 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 public class MainActivityCalendario extends AppCompatActivity {
-    private Context context;
+    private Context context = this;
+    private Button botonNuevoEvento;
+    private CalendarView calendarView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,7 +31,18 @@ public class MainActivityCalendario extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+
+        botonNuevoEvento = findViewById(R.id.buttonNuevoEvento);
+        calendarView = findViewById(R.id.calendarView);
+       botonNuevoEvento.setOnClickListener(v -> {
+           Intent intent = new Intent(context, MainActivityEventos.class);
+           intent.putExtra("Date", calendarView.getDate());
+           startActivity(intent);
+       });
+
     }
+
+
     public boolean onCreateOptionsMenu(Menu menu){
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.menu_main, menu);

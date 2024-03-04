@@ -7,39 +7,32 @@ import com.example.eventosfuturos.mapper.UsuarioMapper;
 import com.example.eventosfuturos.model.dto.Usuario;
 import com.example.eventosfuturos.service.TaskCompleted;
 
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.io.BufferedOutputStream;
 import java.io.BufferedReader;
-import java.io.BufferedWriter;
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
-import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 
-public class InicioSesion extends AsyncTask<String,Object, Usuario> {
-
+public class RegistroUsuario extends AsyncTask<String,Object, Usuario> {
     private TaskCompleted listener;
 
-    public InicioSesion(TaskCompleted listener) {
+    public RegistroUsuario(TaskCompleted listener) {
         this.listener = listener;
     }
+
+
     @Override
-    protected Usuario doInBackground(String... userInfo) {
+    protected Usuario doInBackground(String... strings) {
         try {
-            URL url = new URL("https://proyectoandroidjesuschavero.000webhostapp.com/inicioSesion.php");
+            URL url = new URL("https://proyectoandroidjesuschavero.000webhostapp.com/registrarUsuario.php");
             HttpURLConnection clienthttp = (HttpURLConnection) url.openConnection();
             clienthttp = (HttpURLConnection) url.openConnection();
             //Activamos el método POST
             clienthttp.setRequestMethod("POST");
             clienthttp.setDoOutput(true);
-            String params = "email="+userInfo[0]+"&contrasena="+userInfo[1];
+            String params = "nombre="+strings[0]+"&email="+strings[1]+"&contrasena="+strings[2];
             clienthttp.setRequestProperty("Content-Type","application/x-www-form-urlencoded");
             //Pasamos datos al servicio web
             try(OutputStream os = clienthttp.getOutputStream()) {
@@ -56,6 +49,7 @@ public class InicioSesion extends AsyncTask<String,Object, Usuario> {
                 }
 
             }
+            Log.i("Test", String.valueOf(response));
             return new UsuarioMapper().map(String.valueOf(response));
 
         } catch (MalformedURLException e) {
@@ -66,8 +60,8 @@ public class InicioSesion extends AsyncTask<String,Object, Usuario> {
     }
 
     @Override
-    protected void onPostExecute(Usuario s) {
-        super.onPostExecute(s);
-        listener.onTaskCompleted(s);
+    protected void onPostExecute(Usuario usuario) {
+        super.onPostExecute(usuario);
+        listener.onTaskCompleted(usuario);
     }
 }

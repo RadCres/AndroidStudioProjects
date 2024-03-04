@@ -13,7 +13,7 @@ import com.example.eventosfuturos.service.TaskCompleted;
 
 public class ResumenActivity extends AppCompatActivity implements TaskCompleted<Usuario>, MiAdaptador.IntemClickListener{
     private Button buttonMisGrupos, buttonCalendario;
-
+    private MiAdaptador miAdaptador;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

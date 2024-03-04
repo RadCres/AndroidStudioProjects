@@ -9,18 +9,18 @@ public class Evento {
     private String descripcion;
     private String nombreGrupo;
 
-    public Evento(Date fecha, String titulo, String descripcion, String nombreGrupo) {
+    public Evento(Timestamp fecha, String titulo, String descripcion, String nombreGrupo) {
         this.fecha = fecha;
         this.titulo = titulo;
         this.descripcion = descripcion;
         this.nombreGrupo = nombreGrupo;
     }
 
-    public Date getFecha() {
+    public Timestamp getFecha() {
         return fecha;
     }
 
-    public void setFecha(Date fecha) {
+    public void setFecha(Timestamp fecha) {
         this.fecha = fecha;
     }
 

@@ -49,22 +49,22 @@ public class MiAdaptador extends RecyclerView.Adapter<MiAdaptador.Holder> {
     public class Holder extends RecyclerView.ViewHolder implements View.OnClickListener{
         private TextView textTitulo;
         private TextView textDia;
-        private TextView textHora;
+        private TextView grupo;
 
 
         public Holder(@NonNull View itemView) {
             super(itemView);
             textTitulo = itemView.findViewById(R.id.titulo);
             textDia = itemView.findViewById(R.id.dia);
-            textHora = itemView.findViewById(R.id.hora);
+            grupo = itemView.findViewById(R.id.grupo);
             itemView.setOnClickListener(this);
 
         }
 
         public void fillContent(Evento evento) {
-            this.textTitulo.setText(evento.toString());
-            this.textDia.setText(evento.toString());
-            this.textHora.setText(evento.toString());
+            this.textTitulo.setText(evento.getTitulo().toString());
+            this.textDia.setText(evento.getFecha().toString());
+            this.grupo.setText(evento.getNombreGrupo().toString());
 
         }
 

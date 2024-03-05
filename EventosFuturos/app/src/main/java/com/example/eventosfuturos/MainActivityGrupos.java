@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.eventosfuturos.adapter.MiAdaptadorGrupos;
@@ -18,9 +19,9 @@ import com.example.eventosfuturos.service.TaskCompleted;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivityGrupos extends AppCompatActivity implements TaskCompleted, MiAdaptadorGrupos.IntemClickListener {
+public class MainActivityGrupos extends AppCompatActivity implements TaskCompleted<List<Grupo>>, MiAdaptadorGrupos.IntemClickListener {
     private Context context = this;
-    private RecyclerView recyclerView;
+    private RecyclerView recicler;
     private MiAdaptadorGrupos miAdaptadorGrupos;
     private List<Grupo> listaGrupos = new ArrayList<>();
     @Override
@@ -35,7 +36,12 @@ public class MainActivityGrupos extends AppCompatActivity implements TaskComplet
         });
 
         miAdaptadorGrupos = new MiAdaptadorGrupos(context, listaGrupos);
+        recicler= findViewById(R.id.reciclerGrupos);
+        recicler.setLayoutManager(new LinearLayoutManager(context));
+        recicler.setAdapter(miAdaptadorGrupos);
+        miAdaptadorGrupos.setClickListener(this);
 
+        //Hacer get eventos
     }
 
     @Override
@@ -44,7 +50,9 @@ public class MainActivityGrupos extends AppCompatActivity implements TaskComplet
     }
 
     @Override
-    public void onTaskCompleted(Object o) {
-
+    public void onTaskCompleted(List<Grupo> grupos) {
+    listaGrupos.clear();
+    listaGrupos.addAll(grupos);
+    miAdaptadorGrupos.notifyDataSetChanged();
     }
 }

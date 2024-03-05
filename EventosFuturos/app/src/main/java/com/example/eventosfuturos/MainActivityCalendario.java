@@ -23,6 +23,7 @@ public class MainActivityCalendario extends AppCompatActivity {
     private Context context = this;
     private Button botonNuevoEvento;
     private CalendarView calendarView;
+    private String selectedDay;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,12 +37,27 @@ public class MainActivityCalendario extends AppCompatActivity {
 
         botonNuevoEvento = findViewById(R.id.buttonNuevoEvento);
         calendarView = findViewById(R.id.calendarView);
-       botonNuevoEvento.setOnClickListener(v -> {
+        setCurrentDate();
+        botonNuevoEvento.setOnClickListener(v -> {
            Intent intent = new Intent(context, MainActivityEventos.class);
-           intent.putExtra("Date", new Timestamp(calendarView.getDate()).toString());
+           intent.putExtra("Date", selectedDay);
            startActivity(intent);
-       });
+        });
 
+    }
+
+    private void setCurrentDate(){
+        calendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
+            @Override
+            public void onSelectedDayChange(CalendarView view, int year, int month,
+                                            int dayOfMonth) {
+                String  curDate = String.valueOf(dayOfMonth);
+                String  Year = String.valueOf(year);
+                String  Month = String.valueOf(month);
+
+                selectedDay="date"+Year+"-"+Month+"-"+curDate;
+            }
+        });
     }
 
 

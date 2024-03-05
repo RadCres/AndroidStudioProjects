@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -57,6 +58,7 @@ public class MainActivity extends AppCompatActivity implements TaskCompleted<Usu
             if(switchBoxSesion.isChecked()){
                 signIn();
             }else{
+                Log.i("Loging", "Entra en login");
                 logIn();
             }
         });

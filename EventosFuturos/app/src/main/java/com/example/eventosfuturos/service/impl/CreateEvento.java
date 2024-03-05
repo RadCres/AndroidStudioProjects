@@ -29,7 +29,7 @@ public class CreateEvento extends AsyncTask<Evento,Object, Boolean> {
     @Override
     protected Boolean doInBackground(Evento... eventos) {
         try {
-            URL url = new URL("https://proyectoandroidjesuschavero.000webhostapp.com/inicioSesion.php");
+            URL url = new URL("https://proyectoandroidjesuschavero.000webhostapp.com/createEvento.php");
             HttpURLConnection clienthttp = (HttpURLConnection) url.openConnection();
             clienthttp = (HttpURLConnection) url.openConnection();
             //Activamos el método POST

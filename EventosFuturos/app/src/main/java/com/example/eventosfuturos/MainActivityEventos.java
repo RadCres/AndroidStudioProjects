@@ -1,5 +1,6 @@
 package com.example.eventosfuturos;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -21,6 +22,7 @@ import java.sql.Timestamp;
 public class MainActivityEventos extends AppCompatActivity implements TaskCompleted<Boolean> {
     private EditText editTitulo, editGrupo, editDescripcion, editFecha, editHora;
     private Button buttonCrearEvento;
+    private Context context = this;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,7 +58,12 @@ public class MainActivityEventos extends AppCompatActivity implements TaskComple
     @Override
     public void onTaskCompleted(Boolean created) {
         if(created){
-            Toast.makeText(this, "Evento Creado", Toast.LENGTH_SHORT).show();
+            editTitulo.setText("");
+            editGrupo.setText("");
+            editDescripcion.setText("");
+            editFecha.setText("");;
+            editHora.setText("");;
+            Toast.makeText(context, "Evento Creado", Toast.LENGTH_SHORT).show();
         }else {
             Toast.makeText(this, "No se pudo crear", Toast.LENGTH_SHORT).show();
         }

@@ -1,6 +1,7 @@
 package com.example.eventosfuturos.service.impl;
 
 import android.os.AsyncTask;
+import android.util.Log;
 
 import com.example.eventosfuturos.mapper.UsuarioMapper;
 import com.example.eventosfuturos.model.dto.Evento;
@@ -36,25 +37,27 @@ public class CreateEvento extends AsyncTask<Evento,Object, Boolean> {
             clienthttp.setRequestMethod("POST");
             clienthttp.setDoOutput(true);
             Evento evento = eventos[0];
-            String params = "fecha="+evento.getFecha().toString()+"&titulo="+evento.getTitulo()+"&descripcion="+evento.getDescripcion()+"&grupo="+evento.getNombreGrupo();
-            clienthttp.setRequestProperty("Content-Type","application/x-www-form-urlencoded");
+            String params = "fecha=" + evento.getFecha().toString() + "&titulo=" + evento.getTitulo() + "&descripcion=" + evento.getDescripcion() + "&nombreGrupo=" + evento.getNombreGrupo();
+            clienthttp.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
             //Pasamos datos al servicio web
-            try(OutputStream os = clienthttp.getOutputStream()) {
+            try (OutputStream os = clienthttp.getOutputStream()) {
                 byte[] input = params.getBytes("utf-8");
                 os.write(input, 0, input.length);
             }
             StringBuilder response = new StringBuilder();
-            try(BufferedReader br = new BufferedReader(
+            String responseLine;
+            try (BufferedReader br = new BufferedReader(
                     new InputStreamReader(clienthttp.getInputStream(), "utf-8"))) {
 
-                String responseLine = null;
+                responseLine = null;
                 while ((responseLine = br.readLine()) != null) {
                     response.append(responseLine.trim());
                 }
 
             }
+            Log.i("Test", String.valueOf(response));
             JSONObject jsonObject = new JSONObject(String.valueOf(response));
-            return jsonObject.getBoolean("respuesta");
+            return jsonObject.getBoolean("message");
         } catch (MalformedURLException e) {
             throw new RuntimeException(e);
         } catch (IOException e) {

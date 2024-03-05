@@ -53,9 +53,9 @@ public class MainActivityCalendario extends AppCompatActivity {
                                             int dayOfMonth) {
                 String  curDate = String.valueOf(dayOfMonth);
                 String  Year = String.valueOf(year);
-                String  Month = String.valueOf(month);
+                String  Month = String.valueOf(month+1);
 
-                selectedDay="date"+Year+"-"+Month+"-"+curDate;
+                selectedDay=Year+"-"+Month+"-"+curDate;
             }
         });
     }

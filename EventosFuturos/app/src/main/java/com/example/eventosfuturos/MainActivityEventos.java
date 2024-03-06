@@ -49,20 +49,34 @@ public class MainActivityEventos extends AppCompatActivity implements TaskComple
         String[] dia = fecha.split(" ");
         editFecha.setText(dia[0]);
 
+        setBotonCrearEvento();
+    }
+
+    private void setBotonCrearEvento() {
         buttonCrearEvento.setOnClickListener(v -> {
-            SharedPreferences prefs
-                    =getSharedPreferences(getString(R.string.app_name),
-                    Context.MODE_PRIVATE);
-            String email = prefs.getString("email", "");
-            CreateEvento createEvento = new CreateEvento(this,email);
-            Timestamp timestamp = Timestamp.valueOf(editFecha.getText().toString() + " " + editHora.getText().toString());
-            String titulo = editTitulo.getText().toString();
-            String descripcion = editDescripcion.getText().toString();
-            String nombreGrupo = editGrupo.getText().toString();
-            Evento evento = new Evento(timestamp, titulo, descripcion,nombreGrupo);
-            createEvento.execute(evento);
+            // Obtener valores de los campos
+            String titulo = editTitulo.getText().toString().trim();
+            String grupo = editGrupo.getText().toString().trim();
+            String descripcion = editDescripcion.getText().toString().trim();
+            String fecha = editFecha.getText().toString().trim();
+            String hora = editHora.getText().toString().trim();
+
+            // Verificar si algún campo está vacío
+            if (titulo.isEmpty() || grupo.isEmpty() || descripcion.isEmpty() || fecha.isEmpty() || hora.isEmpty()) {
+                // Mostrar un mensaje al usuario indicando que complete todos los campos
+                Toast.makeText(context, "Completa todos los campos antes de continuar", Toast.LENGTH_SHORT).show();
+            } else {
+                // Todos los campos están completos, proceder con la acción
+                SharedPreferences prefs = getSharedPreferences(getString(R.string.app_name), Context.MODE_PRIVATE);
+                String email = prefs.getString("email", "");
+                CreateEvento createEvento = new CreateEvento(this, email);
+                Timestamp timestamp = Timestamp.valueOf(fecha + " " + hora);
+                Evento evento = new Evento(timestamp, titulo, descripcion, grupo);
+                createEvento.execute(evento);
+            }
         });
     }
+
 
     @Override
     public void onTaskCompleted(Boolean created) {

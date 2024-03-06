@@ -9,8 +9,10 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
@@ -59,8 +61,24 @@ public class MainActivityGrupos extends AppCompatActivity implements TaskComplet
 
     @Override
     public void onClickSelected(View vista, int position) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(vista.getContext());
+        builder.setTitle("Opciones")
+                .setItems(new CharSequence[]{"Salir del grupo", "Añadir usuario al grupo"}, (dialog, which) -> {
+                    switch (which) {
+                        case 0:
 
+                            Toast.makeText(vista.getContext(), "Salir del grupo seleccionado", Toast.LENGTH_SHORT).show();
+                            break;
+                        case 1:
+
+                            Toast.makeText(vista.getContext(), "Añadir usuario al grupo seleccionado", Toast.LENGTH_SHORT).show();
+                            break;
+                    }
+                });
+
+        builder.create().show();
     }
+
 
     @Override
     public void onTaskCompleted(List<Grupo> grupos) {

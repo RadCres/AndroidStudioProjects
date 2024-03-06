@@ -1,12 +1,8 @@
 package com.example.eventosfuturos.service.impl;
 
 import android.os.AsyncTask;
-import android.util.Log;
 
 import com.example.eventosfuturos.service.TaskCompleted;
-
-import org.json.JSONException;
-import org.json.JSONObject;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -16,28 +12,24 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 
-public class SalirDeGrupo extends AsyncTask<Void, Object, Boolean> {
+public class SalirDeGrupo extends AsyncTask<String, Object, Boolean> {
 
     private TaskCompleted listener;
-    private String email;
-    private String nombreGrupo;
 
-    public SalirDeGrupo(TaskCompleted listener, String email, String nombreGrupo) {
+    public SalirDeGrupo(TaskCompleted listener) {
         this.listener = listener;
-        this.email = email;
-        this.nombreGrupo = nombreGrupo;
     }
 
     @Override
-    protected Boolean doInBackground(Void... voids) {
+    protected Boolean doInBackground(String... strings) {
         try {
-            URL url = new URL("https://proyectoandroidjesuschavero.000webhostapp.com/salirDeGrupo.php");
+            URL url = new URL("https://proyectoandroidjesuschavero.000webhostapp.com/borrarUsuarioGrupo.php");
             HttpURLConnection clienthttp = (HttpURLConnection) url.openConnection();
             // Activamos el método POST
             clienthttp.setRequestMethod("POST");
             clienthttp.setDoOutput(true);
 
-            String params = "email=" + email + "&nombreGrupo=" + nombreGrupo;
+            String params = "email=" + strings[0] + "&nombreGrupo=" + strings[1];
             clienthttp.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
 
             // Pasamos datos al servicio web
@@ -56,27 +48,11 @@ public class SalirDeGrupo extends AsyncTask<Void, Object, Boolean> {
                     response.append(responseLine.trim());
                 }
             }
-
-            Log.i("Test", String.valueOf(response));
-            JSONObject jsonObject = new JSONObject(String.valueOf(response));
-            try {
-                return jsonObject.getBoolean("message");
-            } catch (Exception e) {
-                return null;
-            }
-
+            return true;
         } catch (MalformedURLException e) {
             throw new RuntimeException(e);
         } catch (IOException e) {
             throw new RuntimeException(e);
-        } catch (JSONException e) {
-            throw new RuntimeException(e);
         }
-    }
-
-    @Override
-    protected void onPostExecute(Boolean response) {
-        super.onPostExecute(response);
-        listener.onTaskCompleted(response);
     }
 }

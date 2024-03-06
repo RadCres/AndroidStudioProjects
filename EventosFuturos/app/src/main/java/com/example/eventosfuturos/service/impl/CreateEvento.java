@@ -65,7 +65,7 @@ public class CreateEvento extends AsyncTask<Evento,Object, Boolean> {
             try{
                 return jsonObject.getBoolean("message");
             }catch (Exception e){
-                return null;
+                return false;
             }
 
         } catch (MalformedURLException e) {

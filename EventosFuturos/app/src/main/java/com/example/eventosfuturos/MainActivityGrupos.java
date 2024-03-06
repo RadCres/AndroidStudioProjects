@@ -38,6 +38,8 @@ public class MainActivityGrupos extends AppCompatActivity implements TaskComplet
     private MiAdaptadorGrupos miAdaptadorGrupos;
     private List<Grupo> listaGrupos = new ArrayList<>();
     private Button buttonAnadirGrupo;
+
+    private String email;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -61,8 +63,8 @@ public class MainActivityGrupos extends AppCompatActivity implements TaskComplet
         SharedPreferences prefs
                 =getSharedPreferences(getString(R.string.app_name),
                 Context.MODE_PRIVATE);
-        String value = prefs.getString("email", "");
-        getGrupos.execute(value);
+        email = prefs.getString("email", "");
+        getGrupos.execute(email);
 
         setButtonAnadirGrupo();
     }
@@ -75,11 +77,10 @@ public class MainActivityGrupos extends AppCompatActivity implements TaskComplet
                     switch (which) {
                         case 0:
                             // Opción: Añadir usuario al grupo
-                            mostrarDialogoAñadirUsuario();
+                            mostrarDialogoAñadirUsuario(position);
                             break;
                         case 1:
-                            // Opción: Salir del grupo
-                            mostrarDialogoSalirGrupo();
+                            mostrarDialogoSalirGrupo(position);
                             break;
                         // Agregamos el caso para la opción Cancelar
                         case 2:
@@ -92,7 +93,7 @@ public class MainActivityGrupos extends AppCompatActivity implements TaskComplet
     }
 
     // Método para mostrar el diálogo de añadir usuario al grupo
-    private void mostrarDialogoAñadirUsuario() {
+    private void mostrarDialogoAñadirUsuario(int position) {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("Añadir usuario al grupo")
                 .setMessage("Aquí debes implementar la lógica para añadir un usuario al grupo.")
@@ -109,13 +110,13 @@ public class MainActivityGrupos extends AppCompatActivity implements TaskComplet
     }
 
     // Método para mostrar el diálogo de salir del grupo
-    private void mostrarDialogoSalirGrupo() {
+    private void mostrarDialogoSalirGrupo(int position) {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("Salir del grupo")
                 .setMessage("¿Estás seguro de que deseas salir del grupo?")
                 .setPositiveButton("Sí", (dialog, which) -> {
-                    // Implementar lógica cuando el usuario hace clic en "Sí"
-                    // ...
+                    SalirDeGrupo salirDeGrupo = new SalirDeGrupo(this);
+                    salirDeGrupo.execute(email,listaGrupos.get(position).getNombre());
                 })
                 .setNegativeButton("No", (dialog, which) -> {
                     Toast.makeText(context, "Operación cancelada", Toast.LENGTH_SHORT).show();

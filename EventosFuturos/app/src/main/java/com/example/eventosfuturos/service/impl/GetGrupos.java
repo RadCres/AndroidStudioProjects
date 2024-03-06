@@ -32,7 +32,7 @@ public class GetGrupos extends AsyncTask<String,Object, List<Grupo>> {
     }
 
     @Override
-    protected List<Grupo> doInBackground(String... nombre) {
+    protected List<Grupo> doInBackground(String... email) {
         try {
             URL url = new URL("https://proyectoandroidjesuschavero.000webhostapp.com/selectGrupos.php");
             HttpURLConnection clienthttp = (HttpURLConnection) url.openConnection();
@@ -40,7 +40,7 @@ public class GetGrupos extends AsyncTask<String,Object, List<Grupo>> {
             //Activamos el método POST
             clienthttp.setRequestMethod("POST");
             clienthttp.setDoOutput(true);
-            String params = "nombre="+nombre[0];
+            String params = "email="+email[0];
             clienthttp.setRequestProperty("Content-Type","application/x-www-form-urlencoded");
             //Pasamos datos al servicio web
             try(OutputStream os = clienthttp.getOutputStream()) {

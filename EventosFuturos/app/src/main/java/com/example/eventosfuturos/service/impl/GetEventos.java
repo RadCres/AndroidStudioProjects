@@ -33,7 +33,7 @@ public class GetEventos extends AsyncTask<String,Object, List<Evento>> {
     }
 
     @Override
-    protected List<Evento> doInBackground(String... nombre) {
+    protected List<Evento> doInBackground(String... email) {
         try {
             URL url = new URL("https://proyectoandroidjesuschavero.000webhostapp.com/selectEventos.php");
             HttpURLConnection clienthttp = (HttpURLConnection) url.openConnection();
@@ -41,7 +41,7 @@ public class GetEventos extends AsyncTask<String,Object, List<Evento>> {
             //Activamos el método POST
             clienthttp.setRequestMethod("POST");
             clienthttp.setDoOutput(true);
-            String params = "nombre="+nombre[0];
+            String params = "email="+email[0];
             clienthttp.setRequestProperty("Content-Type","application/x-www-form-urlencoded");
             //Pasamos datos al servicio web
             try(OutputStream os = clienthttp.getOutputStream()) {

@@ -1,8 +1,11 @@
 package com.example.eventosfuturos.service.impl;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.util.Log;
 
+import com.example.eventosfuturos.R;
 import com.example.eventosfuturos.mapper.UsuarioMapper;
 import com.example.eventosfuturos.model.dto.Evento;
 import com.example.eventosfuturos.model.dto.Usuario;
@@ -37,7 +40,7 @@ public class CreateEvento extends AsyncTask<Evento,Object, Boolean> {
             clienthttp.setRequestMethod("POST");
             clienthttp.setDoOutput(true);
             Evento evento = eventos[0];
-            String params = "fecha=" + evento.getFecha().toString() + "&titulo=" + evento.getTitulo() + "&descripcion=" + evento.getDescripcion() + "&nombreGrupo=" + evento.getNombreGrupo();
+            String params = "fecha=" + evento.getFecha().toString() + "&titulo=" + evento.getTitulo() + "&descripcion=" + evento.getDescripcion() + "&nombreGrupo=" + evento.getNombreGrupo();//+"&nombreUsuario="+;
             clienthttp.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
             //Pasamos datos al servicio web
             try (OutputStream os = clienthttp.getOutputStream()) {

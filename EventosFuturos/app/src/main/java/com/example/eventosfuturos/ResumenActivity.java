@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -53,8 +54,11 @@ public class ResumenActivity extends AppCompatActivity implements TaskCompleted<
         miAdaptador.setClickListener(this);
 
         GetEventos getEventos = new GetEventos(this);
-        String[] nombre = {getIntent().getStringExtra("nombre")};
-        getEventos.execute(nombre);
+        SharedPreferences prefs
+                =getSharedPreferences(getString(R.string.app_name),
+                Context.MODE_PRIVATE);
+        String value = prefs.getString("email", "");
+        getEventos.execute(value);
     }
 
 
@@ -78,6 +82,12 @@ public class ResumenActivity extends AppCompatActivity implements TaskCompleted<
     public boolean onOptionsItemSelected(MenuItem item){
         switch (item.getItemId()){
             case R.id.itemCerrar:
+                SharedPreferences prefs =
+                        getSharedPreferences(getString(R.string.app_name),
+                                Context.MODE_PRIVATE);
+                SharedPreferences.Editor editor = prefs.edit();
+                editor.clear();
+                editor.commit();
                 Intent intent = new Intent(context, MainActivity.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(intent);

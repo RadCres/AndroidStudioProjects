@@ -2,6 +2,7 @@ package com.example.eventosfuturos;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -49,8 +50,11 @@ public class MainActivityGrupos extends AppCompatActivity implements TaskComplet
 
         //Hacer get eventos
         GetGrupos getGrupos = new GetGrupos(this);
-        String[] nombre = {getIntent().getStringExtra("nombre")};
-        getGrupos.execute(nombre);
+        SharedPreferences prefs
+                =getSharedPreferences(getString(R.string.app_name),
+                Context.MODE_PRIVATE);
+        String value = prefs.getString("email", "");
+        getGrupos.execute(value);
     }
 
     @Override
@@ -74,6 +78,12 @@ public class MainActivityGrupos extends AppCompatActivity implements TaskComplet
     public boolean onOptionsItemSelected(MenuItem item){
         switch (item.getItemId()){
             case R.id.itemCerrar:
+                SharedPreferences prefs =
+                        getSharedPreferences(getString(R.string.app_name),
+                                Context.MODE_PRIVATE);
+                SharedPreferences.Editor editor = prefs.edit();
+                editor.clear();
+                editor.commit();
                 Intent intent = new Intent(context, MainActivity.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(intent);

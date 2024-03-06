@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -94,6 +95,14 @@ public class MainActivity extends AppCompatActivity implements TaskCompleted<Usu
             return;
         }
         Toast.makeText(this, usuario.getNombre(), Toast.LENGTH_SHORT).show();
+        SharedPreferences prefs =
+                getSharedPreferences(getString(R.string.app_name),
+                        Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = prefs.edit();
+        editor.putString("email", email.getText().toString());
+        editor.commit();
+        editor.putString("contrasena", contrasena.getText().toString());
+        editor.commit();
         Intent intent = new Intent(this, ResumenActivity.class);
         intent.putExtra("nombre", usuario.getNombre());
         startActivity(intent);
@@ -109,6 +118,12 @@ public class MainActivity extends AppCompatActivity implements TaskCompleted<Usu
     public boolean onOptionsItemSelected(MenuItem item){
         switch (item.getItemId()){
             case R.id.itemCerrar:
+                SharedPreferences prefs =
+                        getSharedPreferences(getString(R.string.app_name),
+                                Context.MODE_PRIVATE);
+                SharedPreferences.Editor editor = prefs.edit();
+                editor.clear();
+                editor.commit();
                 Intent intent = new Intent(context, MainActivity.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(intent);

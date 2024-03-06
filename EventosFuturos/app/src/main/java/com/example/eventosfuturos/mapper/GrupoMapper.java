@@ -14,9 +14,9 @@ public class GrupoMapper implements Mapper<JSONObject, Grupo> {
     public Grupo map(JSONObject jsonObject) {
         try {
             String nombre = jsonObject.getString("nombre");
-            List<String> emailsAsociados = getEmailsAsociadosDesdeJSON(jsonObject);
+            //List<String> emailsAsociados = getEmailsAsociadosDesdeJSON(jsonObject);
 
-            return new Grupo(nombre, emailsAsociados);
+            return new Grupo(nombre, new ArrayList<>());
         } catch (JSONException e) {
             throw new RuntimeException(e);
         }

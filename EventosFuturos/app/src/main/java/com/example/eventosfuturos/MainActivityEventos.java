@@ -50,7 +50,11 @@ public class MainActivityEventos extends AppCompatActivity implements TaskComple
         editFecha.setText(dia[0]);
 
         buttonCrearEvento.setOnClickListener(v -> {
-            CreateEvento createEvento = new CreateEvento(this);
+            SharedPreferences prefs
+                    =getSharedPreferences(getString(R.string.app_name),
+                    Context.MODE_PRIVATE);
+            String email = prefs.getString("email", "");
+            CreateEvento createEvento = new CreateEvento(this,email);
             Timestamp timestamp = Timestamp.valueOf(editFecha.getText().toString() + " " + editHora.getText().toString());
             String titulo = editTitulo.getText().toString();
             String descripcion = editDescripcion.getText().toString();

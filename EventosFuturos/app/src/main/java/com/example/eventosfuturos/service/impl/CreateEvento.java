@@ -26,9 +26,11 @@ import java.util.List;
 public class CreateEvento extends AsyncTask<Evento,Object, Boolean> {
 
     private TaskCompleted listener;
+    private String email;
 
-    public CreateEvento(TaskCompleted listener){
+    public CreateEvento(TaskCompleted listener, String email){
         this.listener = listener;
+        this.email = email;
     }
     @Override
     protected Boolean doInBackground(Evento... eventos) {
@@ -40,7 +42,7 @@ public class CreateEvento extends AsyncTask<Evento,Object, Boolean> {
             clienthttp.setRequestMethod("POST");
             clienthttp.setDoOutput(true);
             Evento evento = eventos[0];
-            String params = "fecha=" + evento.getFecha().toString() + "&titulo=" + evento.getTitulo() + "&descripcion=" + evento.getDescripcion() + "&nombreGrupo=" + evento.getNombreGrupo();//+"&nombreUsuario="+;
+            String params = "fecha=" + evento.getFecha().toString() + "&titulo=" + evento.getTitulo() + "&descripcion=" + evento.getDescripcion() + "&nombreGrupo=" + evento.getNombreGrupo()+"&email="+email;
             clienthttp.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
             //Pasamos datos al servicio web
             try (OutputStream os = clienthttp.getOutputStream()) {
@@ -60,7 +62,12 @@ public class CreateEvento extends AsyncTask<Evento,Object, Boolean> {
             }
             Log.i("Test", String.valueOf(response));
             JSONObject jsonObject = new JSONObject(String.valueOf(response));
-            return jsonObject.getBoolean("message");
+            try{
+                return jsonObject.getBoolean("message");
+            }catch (Exception e){
+                return null;
+            }
+
         } catch (MalformedURLException e) {
             throw new RuntimeException(e);
         } catch (IOException e) {

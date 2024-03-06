@@ -24,6 +24,7 @@ import com.example.eventosfuturos.adapter.MiAdaptadorGrupos;
 import com.example.eventosfuturos.model.dto.Grupo;
 import com.example.eventosfuturos.service.TaskCompleted;
 import com.example.eventosfuturos.service.impl.GetGrupos;
+import com.example.eventosfuturos.service.impl.SalirDeGrupo;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -66,7 +67,7 @@ public class MainActivityGrupos extends AppCompatActivity implements TaskComplet
                 .setItems(new CharSequence[]{"Salir del grupo", "Añadir usuario al grupo"}, (dialog, which) -> {
                     switch (which) {
                         case 0:
-
+                            SalirDeGrupo salirDeGrupo = new SalirDeGrupo();
                             Toast.makeText(vista.getContext(), "Salir del grupo seleccionado", Toast.LENGTH_SHORT).show();
                             break;
                         case 1:

@@ -1,10 +1,12 @@
 package com.example.eventosfuturos;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -25,8 +27,7 @@ import com.example.eventosfuturos.service.impl.RegistroUsuario;
 
 public class MainActivity extends AppCompatActivity implements TaskCompleted<Usuario> {
     private EditText usuario,contrasena,email;
-    private Button iniciarSesion;
-    private TextView contrasenaOlvidada;
+    private Button iniciarSesion, contrasenaOlvidada;
     private Switch switchBoxSesion;
     private Context context = this;
     @Override
@@ -39,10 +40,57 @@ public class MainActivity extends AppCompatActivity implements TaskCompleted<Usu
         contrasena = findViewById(R.id.editTextPassword);
         iniciarSesion = findViewById(R.id.buttonIniciarSesion);
         switchBoxSesion = findViewById(R.id.switchInicio);
-        contrasenaOlvidada = findViewById(R.id.textViewContraseñaOlvidada);
+        contrasenaOlvidada = findViewById(R.id.buttonContrasenaOlvidada);
         setLogInListener();
         setSwitchBoxBehaviour();
+        sendPassword();
     }
+
+    private boolean sendPassword() {
+        contrasenaOlvidada.setOnClickListener(v -> {
+            String emailVerif = email.getText().toString().trim();
+            if (TextUtils.isEmpty(emailVerif)) {
+                showAlert("Por favor, ingresa tu correo electrónico");
+                return;
+            }
+
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setTitle("Introduce la palabra");
+
+            final EditText input = new EditText(this);
+            builder.setView(input);
+
+            builder.setPositiveButton("Aceptar", (dialog, which) -> {
+                String palabraIngresada = input.getText().toString().trim();
+
+                if (palabraIngresada.equalsIgnoreCase("palabraCorrecta")) {
+
+                    String contrasena = email.getText().toString().trim();
+
+                    Toast.makeText(this, "Contraseña enviada al correo", Toast.LENGTH_SHORT).show();
+                } else {
+
+                    showAlert("Palabra incorrecta");
+                }
+            });
+            builder.setNegativeButton("Cancelar", (dialog, which) -> dialog.cancel());
+            builder.show();
+        });
+
+        return false;
+    }
+
+    private void showAlert(String mensaje) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setMessage(mensaje)
+                .setPositiveButton("Aceptar", (dialog, id) -> {
+
+                });
+
+        builder.create().show();
+    }
+
+
 
     private void setSwitchBoxBehaviour() {
         switchBoxSesion.setOnCheckedChangeListener((buttonView, isChecked) -> {

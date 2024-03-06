@@ -26,6 +26,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.eventosfuturos.adapter.MiAdaptadorGrupos;
 import com.example.eventosfuturos.model.dto.Grupo;
 import com.example.eventosfuturos.service.TaskCompleted;
+import com.example.eventosfuturos.service.impl.AddUserToGroup;
+import com.example.eventosfuturos.service.impl.CreateGrupo;
 import com.example.eventosfuturos.service.impl.GetGrupos;
 import com.example.eventosfuturos.service.impl.SalirDeGrupo;
 
@@ -38,7 +40,6 @@ public class MainActivityGrupos extends AppCompatActivity implements TaskComplet
     private MiAdaptadorGrupos miAdaptadorGrupos;
     private List<Grupo> listaGrupos = new ArrayList<>();
     private Button buttonAnadirGrupo;
-
     private String email;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -100,6 +101,8 @@ public class MainActivityGrupos extends AppCompatActivity implements TaskComplet
                 builder.setView(email);
                 builder.setPositiveButton("Aceptar", (dialog, which) -> {
                     String palabraIngresada = email.getText().toString().trim();
+                    AddUserToGroup addUserToGroup = new AddUserToGroup(this);
+                    addUserToGroup.execute(listaGrupos.get(position).getNombre(),palabraIngresada);
                 })
                 .setNegativeButton("Cancelar", (dialog, which) -> {
                     Toast.makeText(context, "Operación cancelada", Toast.LENGTH_SHORT).show();
@@ -171,9 +174,9 @@ public class MainActivityGrupos extends AppCompatActivity implements TaskComplet
             
             builder.setPositiveButton("Aceptar", (dialog, which) -> {
            
-                //String nuevoGrupo = input.getText().toString();
-                // Llamar a un método para manejar la creación del nuevo grupo
-                //handleCrearGrupo(nuevoGrupo);
+                String nuevoGrupo = input.getText().toString();
+                CreateGrupo createGrupo = new CreateGrupo(this);
+                createGrupo.execute(nuevoGrupo,email);
             });
             builder.setNegativeButton("Cancelar", (dialog, which) -> {
                 Toast.makeText(context, "Operación cancelada", Toast.LENGTH_SHORT).show();

@@ -92,14 +92,14 @@ public class MainActivityGrupos extends AppCompatActivity implements TaskComplet
         builder.create().show();
     }
 
-    // Método para mostrar el diálogo de añadir usuario al grupo
+
     private void mostrarDialogoAñadirUsuario(int position) {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("Añadir usuario al grupo")
-                .setMessage("Aquí debes implementar la lógica para añadir un usuario al grupo.")
-                .setPositiveButton("Aceptar", (dialog, which) -> {
-                    // Implementar lógica cuando el usuario hace clic en "Aceptar"
-                    // ...
+        builder.setTitle("Introduce el email del usuario a añandir");
+            final EditText email = new EditText(this);
+                builder.setView(email);
+                builder.setPositiveButton("Aceptar", (dialog, which) -> {
+                    String palabraIngresada = email.getText().toString().trim();
                 })
                 .setNegativeButton("Cancelar", (dialog, which) -> {
                     Toast.makeText(context, "Operación cancelada", Toast.LENGTH_SHORT).show();
@@ -109,7 +109,7 @@ public class MainActivityGrupos extends AppCompatActivity implements TaskComplet
         builder.create().show();
     }
 
-    // Método para mostrar el diálogo de salir del grupo
+
     private void mostrarDialogoSalirGrupo(int position) {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("Salir del grupo")

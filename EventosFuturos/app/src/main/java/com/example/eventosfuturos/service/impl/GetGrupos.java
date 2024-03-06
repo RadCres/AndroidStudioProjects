@@ -34,7 +34,7 @@ public class GetGrupos extends AsyncTask<String,Object, List<Grupo>> {
     @Override
     protected List<Grupo> doInBackground(String... nombre) {
         try {
-            URL url = new URL("https://proyectoandroidjesuschavero.000webhostapp.com/selectEventos.php");
+            URL url = new URL("https://proyectoandroidjesuschavero.000webhostapp.com/selectGrupos.php");
             HttpURLConnection clienthttp = (HttpURLConnection) url.openConnection();
             clienthttp = (HttpURLConnection) url.openConnection();
             //Activamos el método POST

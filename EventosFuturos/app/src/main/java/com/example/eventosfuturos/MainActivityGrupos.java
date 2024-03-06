@@ -3,6 +3,7 @@ package com.example.eventosfuturos;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -19,6 +20,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.eventosfuturos.adapter.MiAdaptadorGrupos;
 import com.example.eventosfuturos.model.dto.Grupo;
 import com.example.eventosfuturos.service.TaskCompleted;
+import com.example.eventosfuturos.service.impl.GetGrupos;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -46,6 +48,9 @@ public class MainActivityGrupos extends AppCompatActivity implements TaskComplet
         miAdaptadorGrupos.setClickListener(this);
 
         //Hacer get eventos
+        GetGrupos getGrupos = new GetGrupos(this);
+        String[] nombre = {getIntent().getStringExtra("nombre")};
+        getGrupos.execute(nombre);
     }
 
     @Override
@@ -58,6 +63,7 @@ public class MainActivityGrupos extends AppCompatActivity implements TaskComplet
     listaGrupos.clear();
     listaGrupos.addAll(grupos);
     miAdaptadorGrupos.notifyDataSetChanged();
+        Log.d("Grupos",listaGrupos.size()+"");
     }
     public boolean onCreateOptionsMenu(Menu menu){
         MenuInflater inflater = getMenuInflater();

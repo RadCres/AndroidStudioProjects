@@ -1,6 +1,7 @@
 package com.example.eventosfuturos.adapter;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,14 +24,13 @@ public class MiAdaptadorGrupos extends RecyclerView.Adapter<MiAdaptadorGrupos.Ho
     public MiAdaptadorGrupos(Context contexto, List<Grupo> grupos) {
         this.mInflater = LayoutInflater.from(contexto);
         this.grupos = grupos;
-
     }
 
 
     @NonNull
     @Override
     public MiAdaptadorGrupos.Holder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return new Holder(this.mInflater.inflate(R.layout.recycler_view_item, parent, false));
+        return new Holder(this.mInflater.inflate(R.layout.recycler_view_item_1, parent, false));
     }
 
     @Override
@@ -61,9 +61,7 @@ public class MiAdaptadorGrupos extends RecyclerView.Adapter<MiAdaptadorGrupos.Ho
         }
 
         public void fillContent(Grupo grupo) {
-            this.itemGrupo.setText(grupo.getNombre().toString());
-
-
+            this.itemGrupo.setText(grupo.getNombre());
         }
 
         @Override

@@ -60,9 +60,13 @@ public class MainActivity extends AppCompatActivity implements TaskCompleted<Usu
 
     private void setLogInListener() {
         iniciarSesion.setOnClickListener(v -> {
-            if (usuario.getText().toString().isEmpty()||contrasena.getText().toString().isEmpty()||email.getText().toString().isEmpty()){
+            if (iniciarSesion.getText().toString().equals("Registrarse")&&(usuario.getText().toString().isEmpty()||contrasena.getText().toString().isEmpty()||email.getText().toString().isEmpty())){
                 Toast.makeText(context, "Rellena los campos vacíos", Toast.LENGTH_SHORT).show();
-                return ;
+                return;
+            }
+            else if (iniciarSesion.getText().toString().equals("Iniciar sesión")&&(contrasena.getText().toString().isEmpty()||email.getText().toString().isEmpty())){
+                Toast.makeText(context, "Rellena los campos vacíos", Toast.LENGTH_SHORT).show();
+                return;
             }
             if(switchBoxSesion.isChecked()){
                 signIn();

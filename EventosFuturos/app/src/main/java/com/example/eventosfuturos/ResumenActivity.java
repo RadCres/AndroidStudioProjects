@@ -38,7 +38,8 @@ public class ResumenActivity extends AppCompatActivity implements TaskCompleted<
         buttonCalendario = findViewById(R.id.buttonCalendario);
 
         buttonMisGrupos.setOnClickListener(v -> {
-
+            Intent intent = new Intent(context, MainActivityGrupos.class);
+            startActivity(intent);
         });
         buttonCalendario.setOnClickListener(v -> {
             Intent intent = new Intent(v.getContext(), MainActivityCalendario.class);

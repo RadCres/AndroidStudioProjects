@@ -4,11 +4,14 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.text.InputType;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
@@ -34,6 +37,7 @@ public class MainActivityGrupos extends AppCompatActivity implements TaskComplet
     private RecyclerView recicler;
     private MiAdaptadorGrupos miAdaptadorGrupos;
     private List<Grupo> listaGrupos = new ArrayList<>();
+    private Button buttonAnadirGrupo;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,6 +54,7 @@ public class MainActivityGrupos extends AppCompatActivity implements TaskComplet
         recicler.setLayoutManager(new LinearLayoutManager(context));
         recicler.setAdapter(miAdaptadorGrupos);
         miAdaptadorGrupos.setClickListener(this);
+        buttonAnadirGrupo = findViewById(R.id.buttonAnadirGrupo);
 
         //Hacer get eventos
         GetGrupos getGrupos = new GetGrupos(this);
@@ -58,27 +63,68 @@ public class MainActivityGrupos extends AppCompatActivity implements TaskComplet
                 Context.MODE_PRIVATE);
         String value = prefs.getString("email", "");
         getGrupos.execute(value);
+
+        setButtonAnadirGrupo();
     }
 
     @Override
     public void onClickSelected(View vista, int position) {
         AlertDialog.Builder builder = new AlertDialog.Builder(vista.getContext());
         builder.setTitle("Opciones")
-                .setItems(new CharSequence[]{"Salir del grupo", "Añadir usuario al grupo"}, (dialog, which) -> {
+                .setItems(new CharSequence[]{"Añadir usuario al grupo", "Salir del grupo", "Cancelar"}, (dialog, which) -> {
                     switch (which) {
                         case 0:
-                            SalirDeGrupo salirDeGrupo = new SalirDeGrupo();
-                            Toast.makeText(vista.getContext(), "Salir del grupo seleccionado", Toast.LENGTH_SHORT).show();
+                            // Opción: Añadir usuario al grupo
+                            mostrarDialogoAñadirUsuario();
                             break;
                         case 1:
-
-                            Toast.makeText(vista.getContext(), "Añadir usuario al grupo seleccionado", Toast.LENGTH_SHORT).show();
+                            // Opción: Salir del grupo
+                            mostrarDialogoSalirGrupo();
+                            break;
+                        // Agregamos el caso para la opción Cancelar
+                        case 2:
+                            Toast.makeText(context, "Operación cancelada", Toast.LENGTH_SHORT).show();
                             break;
                     }
                 });
 
         builder.create().show();
     }
+
+    // Método para mostrar el diálogo de añadir usuario al grupo
+    private void mostrarDialogoAñadirUsuario() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Añadir usuario al grupo")
+                .setMessage("Aquí debes implementar la lógica para añadir un usuario al grupo.")
+                .setPositiveButton("Aceptar", (dialog, which) -> {
+                    // Implementar lógica cuando el usuario hace clic en "Aceptar"
+                    // ...
+                })
+                .setNegativeButton("Cancelar", (dialog, which) -> {
+                    Toast.makeText(context, "Operación cancelada", Toast.LENGTH_SHORT).show();
+                    dialog.cancel();
+                });
+
+        builder.create().show();
+    }
+
+    // Método para mostrar el diálogo de salir del grupo
+    private void mostrarDialogoSalirGrupo() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Salir del grupo")
+                .setMessage("¿Estás seguro de que deseas salir del grupo?")
+                .setPositiveButton("Sí", (dialog, which) -> {
+                    // Implementar lógica cuando el usuario hace clic en "Sí"
+                    // ...
+                })
+                .setNegativeButton("No", (dialog, which) -> {
+                    Toast.makeText(context, "Operación cancelada", Toast.LENGTH_SHORT).show();
+                    dialog.cancel();
+                });
+
+        builder.create().show();
+    }
+
 
 
     @Override
@@ -111,5 +157,29 @@ public class MainActivityGrupos extends AppCompatActivity implements TaskComplet
             default:
                 return super.onOptionsItemSelected(item);
         }
+    }
+
+    public void setButtonAnadirGrupo() {
+        buttonAnadirGrupo.setOnClickListener(v -> {
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setTitle("Añadir Grupo");
+            
+            final EditText input = new EditText(this);
+            input.setInputType(InputType.TYPE_CLASS_TEXT);
+            builder.setView(input);
+            
+            builder.setPositiveButton("Aceptar", (dialog, which) -> {
+           
+                //String nuevoGrupo = input.getText().toString();
+                // Llamar a un método para manejar la creación del nuevo grupo
+                //handleCrearGrupo(nuevoGrupo);
+            });
+            builder.setNegativeButton("Cancelar", (dialog, which) -> {
+                Toast.makeText(context, "Operación cancelada", Toast.LENGTH_SHORT).show();
+                dialog.cancel();
+            });
+
+            builder.show();
+        });
     }
 }

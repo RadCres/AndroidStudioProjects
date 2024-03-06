@@ -154,7 +154,9 @@ public class MainActivity extends AppCompatActivity implements TaskCompleted<Usu
         Intent intent = new Intent(this, ResumenActivity.class);
         intent.putExtra("nombre", usuario.getNombre());
         startActivity(intent);
-
+        /*email.clearComposingText();
+        contrasena.clearComposingText();
+        usuario.setNombre("");*/
     }
 
     public boolean onCreateOptionsMenu(Menu menu){

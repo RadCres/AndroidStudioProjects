@@ -2,9 +2,13 @@ package com.example.eventosfuturos;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -24,6 +28,7 @@ public class MainActivity extends AppCompatActivity implements TaskCompleted<Usu
     private Button iniciarSesion;
     private TextView contrasenaOlvidada;
     private Switch switchBoxSesion;
+    private Context context = this;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,6 +60,10 @@ public class MainActivity extends AppCompatActivity implements TaskCompleted<Usu
 
     private void setLogInListener() {
         iniciarSesion.setOnClickListener(v -> {
+            if (usuario.getText().toString().isEmpty()||contrasena.getText().toString().isEmpty()||email.getText().toString().isEmpty()){
+                Toast.makeText(context, "Rellena los campos vacíos", Toast.LENGTH_SHORT).show();
+                return ;
+            }
             if(switchBoxSesion.isChecked()){
                 signIn();
             }else{
@@ -85,5 +94,24 @@ public class MainActivity extends AppCompatActivity implements TaskCompleted<Usu
         intent.putExtra("nombre", usuario.getNombre());
         startActivity(intent);
 
+    }
+
+    public boolean onCreateOptionsMenu(Menu menu){
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu_main, menu);
+        return true;
+    }
+
+    public boolean onOptionsItemSelected(MenuItem item){
+        switch (item.getItemId()){
+            case R.id.itemCerrar:
+                Intent intent = new Intent(context, MainActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(intent);
+                finish();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 }

@@ -27,6 +27,7 @@ public class MainActivityCalendario extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        selectedDay = new Timestamp(System.currentTimeMillis()).toString().split(" ")[0];
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main_calendario);
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
@@ -69,13 +70,11 @@ public class MainActivityCalendario extends AppCompatActivity {
 
     public boolean onOptionsItemSelected(MenuItem item){
         switch (item.getItemId()){
-            case R.id.itemEventos:
-                Intent intent = new Intent(context, MainActivityEventos.class);
-                startActivity(intent);
-                return true;
             case R.id.itemCerrar:
-                //System.exit(0);
-                finishAffinity();
+                Intent intent = new Intent(context, MainActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(intent);
+                finish();
                 return true;
             default:
                 return super.onOptionsItemSelected(item);

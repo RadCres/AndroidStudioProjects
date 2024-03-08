@@ -77,11 +77,11 @@ public class MainActivityCalendario extends AppCompatActivity implements TaskCom
         recicler.setAdapter(miAdaptador);
         miAdaptador.setClickListener(this);
         fetchEventos();
-
     }
 
     private void setCurrentDate(){
         calendarView.setOnDateChangeListener((view, year, month, dayOfMonth) -> {
+            recicler.setVisibility(View.VISIBLE);
             String  curDate = String.valueOf(dayOfMonth);
             String  Year = String.valueOf(year);
             String  Month = String.valueOf(month+1);

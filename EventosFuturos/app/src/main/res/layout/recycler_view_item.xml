@@ -1,17 +1,21 @@
-<?xml version="1.0" encoding="utf-8"?>
+<!-- item_layout.xml -->
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              xmlns:tools="http://schemas.android.com/tools"
-              android:orientation="horizontal"
-              android:padding="8dp"
-              android:layout_width="match_parent"
-              android:layout_height="wrap_content">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="horizontal"
+    android:padding="8dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/rounded_corners">
 
+  <!-- Contenido del elemento -->
   <LinearLayout
       android:layout_width="313dp"
       android:layout_height="wrap_content"
       android:layout_gravity="center"
       android:orientation="vertical"
       android:padding="5dp">
+
+    <!-- Tus TextViews y otros elementos aquí -->
 
     <TextView
         android:id="@+id/titulo"
@@ -33,5 +37,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="TextView" />
+
   </LinearLayout>
+ 
 </LinearLayout>

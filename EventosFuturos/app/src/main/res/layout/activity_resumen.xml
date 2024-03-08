@@ -4,19 +4,19 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#EE43CAB4"
-    tools:context=".MainActivityMenuInicioSesion">
+    android:background="@drawable/fondo"
+    tools:context=".ResumenActivity">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recicler"
-        android:layout_width="299dp"
-        android:layout_height="411dp"
+        android:layout_width="310dp"
+        android:layout_height="375dp"
         android:background="#597B7272"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/buttonMisGrupos"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.2"
+        app:layout_constraintVertical_bias="0.5"
         tools:itemCount="5"
         tools:listitem="@layout/recycler_view_item" />
 
@@ -28,12 +28,12 @@
         android:text="Mis Grupos"
         android:textSize="20sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/buttonCalendario"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.775" />
+        app:layout_constraintTop_toBottomOf="@+id/recicler"
+        app:layout_constraintVertical_bias="0.5" />
 
     <Button
         android:id="@+id/buttonCalendario"
@@ -47,6 +47,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.486"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.916" />
+        app:layout_constraintTop_toBottomOf="@+id/buttonMisGrupos"
+        app:layout_constraintVertical_bias="0.5" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,4 @@
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <corners android:radius="8dp" /> <!-- Ajusta el radio según sea necesario -->
+    <solid android:color="#7AFFFFFF" /> <!-- Color de fondo del contenedor -->
+</shape>

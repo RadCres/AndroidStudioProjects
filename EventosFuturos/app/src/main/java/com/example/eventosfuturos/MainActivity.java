@@ -6,6 +6,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
@@ -107,24 +109,39 @@ public class MainActivity extends AppCompatActivity implements TaskCompleted<Usu
         });
     }
 
+    private boolean isInternetConnected() {
+        ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        if (connectivityManager != null) {
+            NetworkInfo activeNetwork = connectivityManager.getActiveNetworkInfo();
+            return activeNetwork != null && activeNetwork.isConnected();
+        }
+        return false;
+    }
+
     private void setLogInListener() {
         iniciarSesion.setOnClickListener(v -> {
-            if (iniciarSesion.getText().toString().equals("Registrarse")&&(usuario.getText().toString().isEmpty()||contrasena.getText().toString().isEmpty()||email.getText().toString().isEmpty())){
+            if (!isInternetConnected()) {
+                Toast.makeText(context, "No hay conexión a Internet", Toast.LENGTH_SHORT).show();
+                return;
+            }
+
+            if (iniciarSesion.getText().toString().equals("Registrarse") && (usuario.getText().toString().isEmpty() || contrasena.getText().toString().isEmpty() || email.getText().toString().isEmpty())) {
+                Toast.makeText(context, "Rellena los campos vacíos", Toast.LENGTH_SHORT).show();
+                return;
+            } else if (iniciarSesion.getText().toString().equals("Iniciar sesión") && (contrasena.getText().toString().isEmpty() || email.getText().toString().isEmpty())) {
                 Toast.makeText(context, "Rellena los campos vacíos", Toast.LENGTH_SHORT).show();
                 return;
             }
-            else if (iniciarSesion.getText().toString().equals("Iniciar sesión")&&(contrasena.getText().toString().isEmpty()||email.getText().toString().isEmpty())){
-                Toast.makeText(context, "Rellena los campos vacíos", Toast.LENGTH_SHORT).show();
-                return;
-            }
-            if(switchBoxSesion.isChecked()){
+
+            if (switchBoxSesion.isChecked()) {
                 signIn();
-            }else{
+            } else {
                 Log.i("Loging", "Entra en login");
                 logIn();
             }
         });
     }
+
 
     private void logIn(){
         InicioSesion inicioSesion = new InicioSesion(this);
@@ -142,7 +159,7 @@ public class MainActivity extends AppCompatActivity implements TaskCompleted<Usu
             Toast.makeText(this, "Usuario no existe", Toast.LENGTH_SHORT).show();
             return;
         }
-        Toast.makeText(this, usuario.getNombre(), Toast.LENGTH_SHORT).show();
+        Toast.makeText(this,"Bienvenid@ "+ usuario.getNombre(), Toast.LENGTH_SHORT).show();
         SharedPreferences prefs =
                 getSharedPreferences(getString(R.string.app_name),
                         Context.MODE_PRIVATE);
